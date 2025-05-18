@@ -112,12 +112,22 @@
             text-align: center;
         }
 
-        .contribute-card:nth-child(2) .card-header {
-            background-color: var(--green-accent);
+        .contribute-card:nth-child(1) .card-header,
+        .contribute-card:nth-child(1) .cta-button {
+            background-color: var(--primary-color) !important;
+            color: #fff !important;
         }
 
-        .contribute-card:nth-child(3) .card-header {
-            background-color: var(--accent-color);
+        .contribute-card:nth-child(2) .card-header,
+        .contribute-card:nth-child(2) .cta-button {
+            background-color: var(--green-accent) !important;
+            color: #fff !important;
+        }
+
+        .contribute-card:nth-child(3) .card-header,
+        .contribute-card:nth-child(3) .cta-button {
+            background-color: var(--accent-color) !important;
+            color: #fff !important;
         }
 
         .card-icon {
@@ -164,14 +174,6 @@
             margin-top: auto;
             align-self: flex-start;
             transition: background-color 0.3s ease;
-        }
-
-        .contribute-card:nth-child(2) .cta-button {
-            background-color: var(--green-accent);
-        }
-
-        .contribute-card:nth-child(3) .cta-button {
-            background-color: var(--accent-color);
         }
 
         .cta-button:hover {
