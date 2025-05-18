@@ -17,12 +17,25 @@
             --card-shadow: rgba(0,0,0,0.1);
         }
 
+        .dark-mode {
+            --primary-color: #8ab4f8;
+            --accent-color: #fdd663;
+            --green-accent: #81c995;
+            --red-accent: #f28b82;
+            --text-color: #e0e0e0;
+            --bg-color: #202124;
+            --card-bg: #303134;
+            --card-border: #5f6368;
+            --card-shadow: rgba(0,0,0,0.3);
+        }
+
         body {
             font-family: 'Google Sans', Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: var(--bg-color);
             color: var(--text-color);
+            transition: all 0.3s ease;
         }
 
         .container {
@@ -532,9 +545,139 @@
             color: #777;
             margin-top: 20px;
         }
+
+        .main-navbar {
+            background: #E8F0FE;
+            border-bottom: 2px solid #4285F4;
+            padding: 0;
+            margin-bottom: 0;
+            transition: all 0.3s ease;
+        }
+        .dark-mode .main-navbar {
+            background: #303134;
+            border-bottom: 2px solid #8ab4f8;
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            height: 60px;
+        }
+        .nav-logo {
+            font-weight: bold;
+            color: #4285F4;
+            font-size: 1.3rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .dark-mode .nav-logo {
+            color: #8ab4f8;
+        }
+        .nav-links a {
+            color: #333;
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .dark-mode .nav-links a {
+            color: #e0e0e0;
+        }
+        .nav-links a:hover {
+            color: #4285F4;
+        }
+        .dark-mode .nav-links a:hover {
+            color: #8ab4f8;
+        }
+        @media (max-width: 700px) {
+            .nav-container {
+                flex-direction: column;
+                align-items: flex-start;
+                height: auto;
+                padding: 10px 10px;
+            }
+            .nav-links {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+            }
+            .nav-links a {
+                margin: 10px 0 0 0;
+            }
+        }
+        body > .hero,
+        body > .container:first-of-type {
+            margin-top: 0 !important;
+        }
+        .toggle-container {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider {
+            background-color: var(--primary-color);
+        }
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+        .toggle-label {
+            margin-right: 10px;
+            line-height: 34px;
+            color: var(--text-color);
+        }
     </style>
 </head>
 <body>
+    <nav class="main-navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">Noah's Kindness Hub</a>
+            <div class="nav-links">
+                <a href="about-noah.html">About Noah</a>
+                <a href="kindness-gallery.html">Kindness Gallery</a>
+                <a href="acts-of-kindness.html">Acts of Kindness</a>
+                <a href="inspiration-stories.html">Inspiration Stories</a>
+                <a href="contribute.html">Contribute</a>
+                <a href="credits-grid.html">Credits & Thanks</a>
+            </div>
+        </div>
+    </nav>
     <div class="hero">
         <div class="container">
             <div class="hero-content">
@@ -552,12 +695,18 @@
             </div>
         </div>
     </div>
-
     <div class="container">
+        <div class="toggle-container">
+            <span class="toggle-label">Dark Mode</span>
+            <label class="toggle-switch">
+                <input type="checkbox" id="darkModeToggle">
+                <span class="slider"></span>
+            </label>
+        </div>
         <section class="nav-section">
             <h2 class="nav-title">Explore Our Kindness Hub</h2>
             <div class="nav-grid">
-                <a href="https://sites.google.com/view/noah-kindness-hub/about-noah" class="nav-card">
+                <a href="about-noah.html" class="nav-card">
                     <div class="nav-card-header"></div>
                     <div class="nav-card-content">
                         <div class="nav-icon">👤</div>
@@ -566,7 +715,7 @@
                     </div>
                 </a>
                 
-                <a href="https://sites.google.com/view/noah-kindness-hub/kindness-gallery" class="nav-card">
+                <a href="kindness-gallery.html" class="nav-card">
                     <div class="nav-card-header"></div>
                     <div class="nav-card-content">
                         <div class="nav-icon">🖼️</div>
@@ -575,7 +724,7 @@
                     </div>
                 </a>
                 
-                <a href="https://sites.google.com/view/noah-kindness-hub/acts-of-kindness-feed" class="nav-card">
+                <a href="acts-of-kindness.html" class="nav-card">
                     <div class="nav-card-header"></div>
                     <div class="nav-card-content">
                         <div class="nav-icon">📝</div>
@@ -584,7 +733,7 @@
                     </div>
                 </a>
                 
-                <a href="https://sites.google.com/view/noah-kindness-hub/inspiration-stories" class="nav-card">
+                <a href="inspiration-stories.html" class="nav-card">
                     <div class="nav-card-header"></div>
                     <div class="nav-card-content">
                         <div class="nav-icon">✨</div>
@@ -593,7 +742,7 @@
                     </div>
                 </a>
                 
-                <a href="https://sites.google.com/view/noah-kindness-hub/how-to-contribute" class="nav-card">
+                <a href="contribute.html" class="nav-card">
                     <div class="nav-card-header"></div>
                     <div class="nav-card-content">
                         <div class="nav-icon">🤝</div>
@@ -602,7 +751,7 @@
                     </div>
                 </a>
                 
-                <a href="https://sites.google.com/view/noah-kindness-hub/credits-thanks" class="nav-card">
+                <a href="credits-grid.html" class="nav-card">
                     <div class="nav-card-header"></div>
                     <div class="nav-card-content">
                         <div class="nav-icon">❤️</div>
@@ -671,12 +820,12 @@
                 <h3 class="footer-title">Noah's Kindness Hub</h3>
                 <p class="footer-description">A memorial project dedicated to continuing Noah's legacy of kindness and compassion in our school and community.</p>
                 <div class="footer-links">
-                    <a href="https://sites.google.com/view/noah-kindness-hub/about-noah" class="footer-link">About Noah</a>
-                    <a href="https://sites.google.com/view/noah-kindness-hub/kindness-gallery" class="footer-link">Kindness Gallery</a>
-                    <a href="https://sites.google.com/view/noah-kindness-hub/acts-of-kindness-feed" class="footer-link">Acts of Kindness</a>
-                    <a href="https://sites.google.com/view/noah-kindness-hub/inspiration-stories" class="footer-link">Inspiration Stories</a>
-                    <a href="https://sites.google.com/view/noah-kindness-hub/how-to-contribute" class="footer-link">Contribute</a>
-                    <a href="https://sites.google.com/view/noah-kindness-hub/credits-thanks" class="footer-link">Credits & Thanks</a>
+                    <a href="about-noah.html" class="footer-link">About Noah</a>
+                    <a href="kindness-gallery.html" class="footer-link">Kindness Gallery</a>
+                    <a href="acts-of-kindness.html" class="footer-link">Acts of Kindness</a>
+                    <a href="inspiration-stories.html" class="footer-link">Inspiration Stories</a>
+                    <a href="contribute.html" class="footer-link">Contribute</a>
+                    <a href="credits-grid.html" class="footer-link">Credits & Thanks</a>
                 </div>
                 <p class="footer-credit">© 2023 Noah's Kindness Hub | Created by Students & Staff</p>
             </div>
@@ -692,6 +841,17 @@
                 img.classList.remove('loading');
                 img.classList.add('loaded');
             }
+        });
+
+        // Dark mode toggle functionality
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        // Check for saved preference
+        const savedDarkMode = localStorage.getItem('darkMode') === 'true';
+        darkModeToggle.checked = savedDarkMode;
+        document.body.classList.toggle('dark-mode', savedDarkMode);
+        darkModeToggle.addEventListener('change', function() {
+            document.body.classList.toggle('dark-mode', this.checked);
+            localStorage.setItem('darkMode', this.checked);
         });
     });
     </script>

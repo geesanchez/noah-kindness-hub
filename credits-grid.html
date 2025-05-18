@@ -5,118 +5,756 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Credits & Thanks - Noah's Kindness Hub</title>
     <style>
-        .noah-credits-grid {
-            --bg-color: #ffffff;
-            --text-color: #333333;
-            --card-bg: #f5f5f5;
+        :root {
+            --primary-color: #4285F4;
+            --accent-color: #FBBC05;
+            --green-accent: #34A853;
+            --red-accent: #EA4335;
+            --text-color: #333;
+            --bg-color: #fff;
+            --card-bg: #f8f9fa;
             --card-border: #e0e0e0;
-            font-family: 'Arial', sans-serif;
-            max-width: 1200px;
+            --card-shadow: rgba(0,0,0,0.1);
+        }
+
+        .dark-mode {
+            --primary-color: #8ab4f8;
+            --accent-color: #fdd663;
+            --green-accent: #81c995;
+            --red-accent: #f28b82;
+            --text-color: #e0e0e0;
+            --bg-color: #202124;
+            --card-bg: #303134;
+            --card-border: #5f6368;
+            --card-shadow: rgba(0,0,0,0.3);
+        }
+
+        body {
+            font-family: 'Google Sans', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: all 0.3s ease;
+        }
+
+        .container {
+            max-width: 1100px;
             margin: 0 auto;
             padding: 20px;
         }
 
-        .noah-credits-grid[data-theme="dark"] {
-            --bg-color: #1a1a1a;
-            --text-color: #ffffff;
-            --card-bg: #2d2d2d;
-            --card-border: #404040;
+        /* Navigation Bar Styles */
+        .main-navbar {
+            background: #E8F0FE;
+            border-bottom: 2px solid #4285F4;
+            padding: 0;
+            margin-bottom: 0;
+            transition: all 0.3s ease;
         }
 
-        .noah-credits-grid {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            transition: background-color 0.3s, color 0.3s;
+        .dark-mode .main-navbar {
+            background: #303134;
+            border-bottom: 2px solid #8ab4f8;
         }
 
-        .noah-theme-toggle {
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            height: 60px;
+        }
+
+        .nav-logo {
+            font-weight: bold;
+            color: #4285F4;
+            font-size: 1.3rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .dark-mode .nav-logo {
+            color: #8ab4f8;
+        }
+
+        .nav-links a {
+            color: #333;
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .dark-mode .nav-links a {
+            color: #e0e0e0;
+        }
+
+        .nav-links a:hover {
+            color: #4285F4;
+        }
+
+        .dark-mode .nav-links a:hover {
+            color: #8ab4f8;
+        }
+
+        @media (max-width: 700px) {
+            .nav-container {
+                flex-direction: column;
+                align-items: flex-start;
+                height: auto;
+                padding: 10px 10px;
+            }
+            .nav-links {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+            }
+            .nav-links a {
+                margin: 10px 0 0 0;
+            }
+        }
+
+        /* Content Styles */
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            margin: 0 0 10px 0;
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        h1::after {
+            content: "";
             position: absolute;
-            top: 20px;
-            right: 20px;
-            padding: 10px;
-            border-radius: 50%;
-            border: none;
-            background: var(--card-bg);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-color);
+            opacity: 0.8;
+            max-width: 700px;
+            margin: 20px auto;
+            line-height: 1.6;
+        }
+
+        .toggle-container {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
             cursor: pointer;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-            z-index: 1000;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
         }
 
-        .noah-credits-grid .grid {
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: var(--primary-color);
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+
+        .toggle-label {
+            margin-right: 10px;
+            line-height: 34px;
+            color: var(--text-color);
+        }
+
+        .section-title {
+            color: var(--primary-color);
+            text-align: center;
+            margin: 40px 0 20px;
+            font-size: 1.8rem;
+        }
+
+        .card-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 20px;
-            padding: 20px;
+            margin-bottom: 40px;
         }
 
-        .noah-credits-grid .card {
-            background: var(--card-bg);
+        .card {
+            background-color: var(--card-bg);
             border: 1px solid var(--card-border);
             border-radius: 10px;
             padding: 20px;
-            text-align: center;
-            transition: transform 0.3s;
+            box-shadow: 0 4px 6px var(--card-shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
 
-        .noah-credits-grid .card:hover {
+        .card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 10px 15px var(--card-shadow);
         }
 
-        .noah-credits-grid .card img {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            margin-bottom: 15px;
-            object-fit: cover;
+        .card-name {
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: var(--primary-color);
         }
 
-        .noah-credits-grid .card h3 {
-            margin: 10px 0;
-            color: var(--text-color);
-        }
-
-        .noah-credits-grid .card p {
-            margin: 5px 0;
+        .card-role {
+            font-style: italic;
+            margin-bottom: 10px;
             color: var(--text-color);
             opacity: 0.8;
         }
 
+        .card-contribution {
+            font-size: 14px;
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+
+        .special-thanks {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 40px;
+            text-align: center;
+            border-top: 4px solid var(--accent-color);
+        }
+
+        .special-thanks h2 {
+            color: var(--primary-color);
+            margin-top: 0;
+        }
+
+        .thanks-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .thanks-item {
+            background-color: var(--bg-color);
+            padding: 10px 20px;
+            border-radius: 30px;
+            box-shadow: 0 2px 4px var(--card-shadow);
+            font-size: 0.9rem;
+        }
+
+        .timeline-section {
+            margin-bottom: 40px;
+        }
+
+        .timeline-section h2 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: var(--card-border);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--accent-color);
+            border: 4px solid var(--primary-color);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .timeline-item.left {
+            left: 0;
+        }
+
+        .timeline-item.right {
+            left: 50%;
+        }
+
+        .timeline-item.left::after {
+            right: -12px;
+        }
+
+        .timeline-item.right::after {
+            left: -12px;
+        }
+
+        .timeline-content {
+            padding: 20px;
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px var(--card-shadow);
+        }
+
+        .timeline-date {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .timeline-text {
+            line-height: 1.5;
+        }
+
+        .maintenance-plan {
+            background-color: #E8F0FE;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 40px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .dark-mode .maintenance-plan {
+            background-color: #1a73e8;
+            color: white;
+        }
+
+        .maintenance-plan h2 {
+            color: var(--primary-color);
+            margin-top: 0;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .dark-mode .maintenance-plan h2 {
+            color: white;
+        }
+
+        .maintenance-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        @media (min-width: 768px) {
+            .maintenance-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .maintenance-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            transition: background-color 0.3s ease;
+        }
+
+        .dark-mode .maintenance-card {
+            background-color: #303134;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .maintenance-title {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .maintenance-icon {
+            font-size: 1.5rem;
+        }
+
+        .maintenance-content {
+            line-height: 1.6;
+        }
+
+        .back-to-home {
+            display: block;
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .back-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-button:hover {
+            background-color: #3367D6;
+        }
+
+        .dark-mode .back-button:hover {
+            background-color: #6da5f7;
+        }
+
+        @media (max-width: 768px) {
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item.right {
+                left: 0;
+            }
+            
+            .timeline-item.left::after,
+            .timeline-item.right::after {
+                left: 20px;
+            }
+        }
+
+        .student-name-card {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--primary-color);
+            text-align: center;
+            padding: 18px 0;
+            background: var(--card-bg);
+            border-radius: 10px;
+            box-shadow: 0 2px 4px var(--card-shadow);
+        }
+
+        .student-list {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .student-list ul {
+            columns: 2 200px;
+            -webkit-columns: 2 200px;
+            -moz-columns: 2 200px;
+            list-style: none;
+            padding: 0;
+            margin: 0 auto;
+            max-width: 600px;
+        }
+
+        .student-list li {
+            padding: 6px 0;
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+
         @media (max-width: 600px) {
-            .noah-credits-grid .grid {
-                grid-template-columns: 1fr;
+            .student-list ul {
+                columns: 1;
             }
         }
     </style>
 </head>
 <body>
-    <div class="noah-credits-grid" id="noahCreditsGrid">
-        <button class="noah-theme-toggle" onclick="toggleNoahTheme()">🌓</button>
-        <div class="grid">
-            <!-- Example cards - repeat for up to 16 students -->
-            <div class="card">
-                <img src="placeholder.jpg" alt="Student photo">
-                <h3>Student Name</h3>
-                <p>Team Role</p>
-                <p>Contribution</p>
+    <!-- Navigation Bar -->
+    <nav class="main-navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">Noah's Kindness Hub</a>
+            <div class="nav-links">
+                <a href="about-noah.html">About Noah</a>
+                <a href="kindness-gallery.html">Kindness Gallery</a>
+                <a href="acts-of-kindness.html">Acts of Kindness</a>
+                <a href="inspiration-stories.html">Inspiration Stories</a>
+                <a href="contribute.html">Contribute</a>
+                <a href="credits-grid.html">Credits & Thanks</a>
             </div>
-            <!-- Add more cards as needed -->
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="toggle-container">
+            <span class="toggle-label">Dark Mode</span>
+            <label class="toggle-switch">
+                <input type="checkbox" id="darkModeToggle">
+                <span class="slider"></span>
+            </label>
+        </div>
+
+        <header>
+            <h1>Credits & Thanks</h1>
+            <p class="subtitle">Recognizing everyone who contributed to Noah's Kindness Hub and helped make this memorial project possible. This collaborative effort reflects the spirit of community that Noah inspired in all of us.</p>
+        </header>
+
+        <section>
+            <h2 class="section-title">All Student Contributors</h2>
+            <div class="student-list">
+                <ul>
+                    <li>London</li>
+                    <li>Penny</li>
+                    <li>Elody</li>
+                    <li>Lucy</li>
+                    <li>Mia</li>
+                    <li>Bryce</li>
+                    <li>Ava</li>
+                    <li>Noah</li>
+                    <li>Olivia</li>
+                    <li>Ethan</li>
+                    <li>Liam</li>
+                    <li>Ava</li>
+                    <li>Emma</li>
+                    <li>Jacob</li>
+                    <li>Sophia</li>
+                    <li>Jackson</li>
+                    <li>Isabella</li>
+                    <li>William</li>
+                    <li>Aiden</li>
+                    <li>Ava</li>
+                    <li>Ethan</li>
+                    <li>Liam</li>
+                    <li>Ava</li>
+                    <li>Emma</li>
+                    <!-- ...add all 40 names here... -->
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">Staff & Faculty</h2>
+            <div class="card-grid" id="staffGrid">
+                <div class="card">
+                    <div class="card-name">Mayra Serriteno</div>
+                    <div class="card-role">ELOS - AfterSchool Director</div>
+                </div>
+                <div class="card">
+                    <div class="card-name">Cassandra Preciado</div>
+                    <div class="card-role">Bradley Elementary Office Assistant</div>
+                </div>
+                <div class="card">
+                    <div class="card-name">Andrew DC</div>
+                    <div class="card-role">Bradley Elementary Principal</div>
+                </div>
+                <div class="card">
+                    <div class="card-name">Hamza Al Haidiri</div>
+                    <div class="card-role">America Scores Director</div>
+                </div>
+                <div class="card">
+                    <div class="card-name">Consuelo Gomez</div>
+                    <div class="card-role">America Scores Director</div>
+                </div>
+                <div class="card">
+                    <div class="card-name">Addy Rodriguez</div>
+                    <div class="card-role">Operations Program Manager</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="special-thanks">
+            <h2>Special Thanks</h2>
+            <p>We extend our heartfelt gratitude to the following individuals and organizations who provided additional support for Noah's Kindness Hub:</p>
+            <div class="thanks-list">
+                <div class="thanks-item">School Admin</div>
+                <div class="thanks-item">Custodial Team</div>
+                <div class="thanks-item">Noah's Family</div>
+                <div class="thanks-item">Community Donors</div>
+                <div class="thanks-item">Local Businesses</div>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2>Project Timeline</h2>
+            <div class="timeline">
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Week 1</div>
+                        <div class="timeline-text">Project kickoff: introduced the project, showed a QR demo, led a kindness brainstorming session, drafted the sitemap, and discussed potential pages for the site. No teams were formed at this stage.</div>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Week 2</div>
+                        <div class="timeline-text">Content creation began through student classwork. Prompts were given to facilitate the creation of each page. Initial designs were reviewed and refined based on feedback.</div>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Week 3</div>
+                        <div class="timeline-text">Final content integration and testing. QR code plaque was designed and prepared for installation in the school hallway.</div>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Launch Day</div>
+                        <div class="timeline-text">Noah's Kindness Hub officially launched with a small ceremony. QR code plaque was installed and the first acts of kindness were shared.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="maintenance-plan">
+            <h2>Future Maintenance Plan</h2>
+            <div class="maintenance-grid">
+                <div class="maintenance-card">
+                    <div class="maintenance-title">
+                        <span class="maintenance-icon">📅</span>
+                        <span>Regular Updates</span>
+                    </div>
+                    <div class="maintenance-content">
+                        <p>The Padlet feed will be archived each June to preserve content while keeping the site fresh. New 6th-graders will add videos each spring to continue Noah's legacy.</p>
+                    </div>
+                </div>
+                
+                <div class="maintenance-card">
+                    <div class="maintenance-title">
+                        <span class="maintenance-icon">🔍</span>
+                        <span>Quality Checks</span>
+                    </div>
+                    <div class="maintenance-content">
+                        <p>Project Coordinators will perform link checks each semester to ensure all content remains accessible. Any broken links or issues will be promptly addressed.</p>
+                    </div>
+                </div>
+                
+                <div class="maintenance-card">
+                    <div class="maintenance-title">
+                        <span class="maintenance-icon">🔄</span>
+                        <span>Content Rotation</span>
+                    </div>
+                    <div class="maintenance-content">
+                        <p>Featured content will be rotated monthly to showcase new contributions and keep the site engaging for returning visitors.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="back-to-home">
+            <a href="index.html" class="back-button">Back to Home</a>
         </div>
     </div>
 
     <script>
-        function toggleNoahTheme() {
-            const grid = document.getElementById('noahCreditsGrid');
-            const currentTheme = grid.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            grid.setAttribute('data-theme', newTheme);
-            localStorage.setItem('noahTheme', newTheme);
+        // Sample data for student team
+        const students = [
+            { name: "Emma S.", role: "Site Team Lead", contribution: "Designed the homepage layout and coordinated site navigation. Led the team in creating a cohesive user experience across all pages." },
+            { name: "Jacob T.", role: "Video Team", contribution: "Edited tribute videos and created the intro animation. Helped other students learn basic video editing techniques." },
+            { name: "Sophia L.", role: "Media Team", contribution: "Collected and organized photos for the kindness gallery. Created the photo submission guidelines." },
+            { name: "Noah P.", role: "Plaque Team", contribution: "Designed the QR code layout and helped with installation. Coordinated with administration on placement." },
+            { name: "Olivia R.", role: "Content Writer", contribution: "Wrote copy for multiple pages and edited submissions for clarity and consistency." },
+            { name: "Ethan M.", role: "Site Tester", contribution: "Tested all pages and features across different devices to ensure everything worked properly." },
+            { name: "Ava J.", role: "Kindness Coordinator", contribution: "Organized kindness activities and encouraged student participation in the project." },
+            { name: "Liam K.", role: "Accessibility Checker", contribution: "Ensured the site was accessible to all users, including those using screen readers." }
+        ];
+
+        // Sample data for staff and faculty
+        const staff = [
+            { name: "Ms. Rivera", role: "Project Advisor", contribution: "Provided overall guidance for the project and coordinated with school administration." },
+            { name: "Mr. Johnson", role: "Technology Teacher", contribution: "Offered technical support and taught students web design principles." },
+            { name: "Mrs. Thompson", role: "Art Teacher", contribution: "Guided students in creating visual elements and helped with the kindness gallery." },
+            { name: "Mr. Garcia", role: "Librarian", contribution: "Helped research kindness stories and provided resources for the project." }
+        ];
+
+        // Function to create cards
+        function createCards(data, containerId) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = ''; // Clear existing cards
+            
+            data.forEach(person => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                
+                card.innerHTML = `
+                    <div class="card-name">${person.name}</div>
+                    <div class="card-role">${person.role}</div>
+                    <div class="card-contribution">${person.contribution}</div>
+                `;
+                
+                container.appendChild(card);
+            });
         }
 
-        // Check for saved theme preference
-        const savedTheme = localStorage.getItem('noahTheme');
-        if (savedTheme) {
-            document.getElementById('noahCreditsGrid').setAttribute('data-theme', savedTheme);
-        }
+        // Dark mode toggle functionality
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        
+        darkModeToggle.addEventListener('change', function() {
+            document.body.classList.toggle('dark-mode', this.checked);
+            // Save preference to localStorage
+            localStorage.setItem('darkMode', this.checked);
+        });
+
+        // Check for saved preference
+        const savedDarkMode = localStorage.getItem('darkMode') === 'true';
+        darkModeToggle.checked = savedDarkMode;
+        document.body.classList.toggle('dark-mode', savedDarkMode);
+
+        // Initialize cards
+        document.addEventListener('DOMContentLoaded', function() {
+            createCards(students, 'studentGrid');
+            createCards(staff, 'staffGrid');
+        });
     </script>
 </body>
-</html> 
+</html>
