@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contribute - Noah's Kindness Hub</title>
+    <style>
+        :root {
+            --primary-color: #4285F4;
+            --accent-color: #FBBC05;
+            --green-accent: #34A853;
+            --red-accent: #EA4335;
+            --text-color: #333;
+            --bg-color: #fff;
+            --card-bg: #f8f9fa;
+            --card-border: #e0e0e0;
+            --card-shadow: rgba(0,0,0,0.1);
+        }
+
+        body {
+            font-family: 'Google Sans', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            margin: 0 0 10px 0;
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        h1::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 700px;
+            margin: 20px auto;
+            line-height: 1.6;
+        }
+
+        .ways-to-contribute {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        @media (min-width: 768px) {
+            .ways-to-contribute {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .contribute-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px var(--card-shadow);
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .contribute-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .contribute-card:nth-child(2) .card-header {
+            background-color: var(--green-accent);
+        }
+
+        .contribute-card:nth-child(3) .card-header {
+            background-color: var(--accent-color);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            margin: 0;
+        }
+
+        .card-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-description {
+            margin-bottom: 20px;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+
+        .card-steps {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .card-steps li {
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: auto;
+            align-self: flex-start;
+            transition: background-color 0.3s ease;
+        }
+
+        .contribute-card:nth-child(2) .cta-button {
+            background-color: var(--green-accent);
+        }
+
+        .contribute-card:nth-child(3) .cta-button {
+            background-color: var(--accent-color);
+        }
+
+        .cta-button:hover {
+            opacity: 0.9;
+        }
+
+        .guidelines-section {
+            background-color: #E8F0FE;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 40px;
+        }
+
+        .guidelines-section h2 {
+            color: var(--primary-color);
+            margin-top: 0;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .guidelines-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        @media (min-width: 768px) {
+            .guidelines-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .guideline-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .guideline-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .guideline-icon {
+            width: 30px;
+            height: 30px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .guideline-content {
+            line-height: 1.6;
+        }
+
+        .faq-section {
+            margin-bottom: 40px;
+        }
+
+        .faq-section h2 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--card-border);
+            padding-bottom: 20px;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .faq-question {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .faq-answer {
+            line-height: 1.6;
+        }
+
+        .contact-section {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 40px;
+            text-align: center;
+            border-top: 4px solid var(--primary-color);
+        }
+
+        .contact-section h2 {
+            color: var(--primary-color);
+            margin-top: 0;
+        }
+
+        .contact-options {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .contact-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background-color: #E8F0FE;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+
+        .contact-label {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .contact-value {
+            color: #555;
+        }
+
+        .privacy-notice {
+            background-color: #FFF8E1;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 40px;
+            font-size: 0.9rem;
+            color: #555;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .privacy-notice h3 {
+            color: var(--primary-color);
+            margin-top: 0;
+            font-size: 1.1rem;
+        }
+
+        .privacy-notice p {
+            margin: 10px 0;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Contribute</h1>
+            <p class="subtitle">Join us in continuing Noah's legacy of kindness. There are many ways to contribute to our community project, whether you want to share your own acts of kindness, submit media, or help spread the word.</p>
+        </header>
+
+        <div class="ways-to-contribute">
+            <div class="contribute-card">
+                <div class="card-header">
+                    <div class="card-icon">📝</div>
+                    <h2 class="card-title">Share Your Story</h2>
+                </div>
+                <div class="card-content">
+                    <div class="card-description">
+                        <p>Have you performed or witnessed an act of kindness? Share your experience to inspire others and add to our growing collection of kindness stories.</p>
+                    </div>
+                    <ol class="card-steps">
+                        <li>Click the "Submit Story" button below</li>
+                        <li>Fill out the form on our Kindness Inspiration Board</li>
+                        <li>Include your first name and grade level</li>
+                        <li>Your story will appear instantly on our board</li>
+                    </ol>
+                    <a href="https://padlet.com/sanchez27gs/kindness-inspiration-board-2ngltiohmz997jct"
+                       class="cta-button"
+                       target="_blank"
+                       rel="noopener">
+                       Submit Story
+                    </a>
+                </div>
+            </div>
+            
+            <div class="contribute-card">
+                <div class="card-header" style="background-color: #34A853;">
+                    <div class="card-icon">🖼️</div>
+                    <h2 class="card-title">Submit Media</h2>
+                </div>
+                <div class="card-content">
+                    <div class="card-description">
+                        <p>Share photos, artwork, or videos related to kindness and Noah's legacy. Your creative contributions help make our hub visually engaging and inspiring.</p>
+                    </div>
+                    <ol class="card-steps">
+                        <li>Click the "Submit Media" button below</li>
+                        <li>Upload your photo, artwork, or video file on our Kindness Inspiration Board</li>
+                        <li>Add a brief description and your information</li>
+                        <li>Your media will appear instantly on our board</li>
+                    </ol>
+                    <a href="https://padlet.com/sanchez27gs/kindness-inspiration-board-2ngltiohmz997jct"
+                       class="cta-button"
+                       target="_blank"
+                       rel="noopener"
+                       style="background-color: #34A853;">
+                       Submit Media
+                    </a>
+                </div>
+            </div>
+            
+            <div class="contribute-card">
+                <div class="card-header" style="background-color: #FBBC05;">
+                    <div class="card-icon">🌟</div>
+                    <h2 class="card-title">Spread Kindness</h2>
+                </div>
+                <div class="card-content">
+                    <div class="card-description">
+                        <p>Help spread Noah's legacy of kindness by performing your own acts of kindness and encouraging others to do the same. Share your act on our Kindness Inspiration Board!</p>
+                    </div>
+                    <ol class="card-steps">
+                        <li>Perform an act of kindness in Noah's memory</li>
+                        <li>Document your act (if appropriate)</li>
+                        <li>Click the "Get Started" button below to share it on our board</li>
+                        <li>Encourage others to visit our Kindness Hub</li>
+                    </ol>
+                    <a href="https://padlet.com/sanchez27gs/kindness-inspiration-board-2ngltiohmz997jct"
+                       class="cta-button"
+                       target="_blank"
+                       rel="noopener"
+                       style="background-color: #FBBC05;">
+                       Get Started
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="contribute-note" style="margin-top: 30px; background: #E8F0FE; border-radius: 10px; padding: 20px;">
+            <strong>Note:</strong> All stories, photos, and acts of kindness will be shared instantly on our 
+            <a href="https://padlet.com/sanchez27gs/kindness-inspiration-board-2ngltiohmz997jct" target="_blank" rel="noopener">
+                Kindness Inspiration Board
+            </a>. Please follow the guidelines below to help keep our community safe and positive.
+        </div>
+        
+        <div class="guidelines-section" style="background-color: #E8F0FE; border-radius: 10px; padding: 30px; margin-bottom: 40px;">
+            <h2>Submission Guidelines</h2>
+            <div class="guidelines-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
+                <div class="guideline-card" style="background-color: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                    <div class="guideline-title" style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px; color: #4285F4; font-weight: bold;">
+                        <div class="guideline-icon" style="width: 30px; height: 30px; background-color: #4285F4; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">1</div>
+                        <span>Appropriate Content</span>
+                    </div>
+                    <div class="guideline-content">
+                        <p>All submissions should be school-appropriate and focus on positive, kind actions. Content should be respectful and suitable for all ages. Avoid sharing personal contact information or full names.</p>
+                    </div>
+                </div>
+                
+                <div class="guideline-card" style="background-color: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                    <div class="guideline-title" style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px; color: #4285F4; font-weight: bold;">
+                        <div class="guideline-icon" style="width: 30px; height: 30px; background-color: #4285F4; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">2</div>
+                        <span>Privacy Considerations</span>
+                    </div>
+                    <div class="guideline-content">
+                        <p>Use first names and last initials only. If sharing photos that include other people, ensure you have their permission. For students, parent/guardian permission is required for any identifiable images.</p>
+                    </div>
+                </div>
+                
+                <div class="guideline-card" style="background-color: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                    <div class="guideline-title" style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px; color: #4285F4; font-weight: bold;">
+                        <div class="guideline-icon" style="width: 30px; height: 30px; background-color: #4285F4; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">3</div>
+                        <span>Media Quality</span>
+                    </div>
+                    <div class="guideline-content">
+                        <p>Photos and videos should be clear and well-lit. For videos, ensure audio is clear and background noise is minimal. All media should be relevant to kindness, Noah's legacy, or community impact.</p>
+                    </div>
+                </div>
+                
+                <div class="guideline-card" style="background-color: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                    <div class="guideline-title" style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px; color: #4285F4; font-weight: bold;">
+                        <div class="guideline-icon" style="width: 30px; height: 30px; background-color: #4285F4; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">4</div>
+                        <span>Instant Posting</span>
+                    </div>
+                    <div class="guideline-content">
+                        <p>All submissions are posted instantly to our Kindness Inspiration Board. Please double-check your post for privacy and appropriateness before submitting.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">Who can contribute to Noah's Kindness Hub?</div>
+                <div class="faq-answer">
+                    <p>Anyone can contribute! We welcome submissions from students, teachers, staff, parents, and community members. Students under 13 should have parent/guardian assistance when submitting content.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">How long will it take for my submission to appear on the site?</div>
+                <div class="faq-answer">
+                    <p>Submissions appear instantly on our Kindness Inspiration Board (Padlet). There is no waiting period or review process—your act of kindness will be visible right away!</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Can I submit something anonymously?</div>
+                <div class="faq-answer">
+                    <p>Yes, you can choose to have your submission displayed anonymously on the board. However, please use first names only and do not include personal contact information in your post.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">What types of kindness acts should I share?</div>
+                <div class="faq-answer">
+                    <p>We welcome all acts of kindness, big or small! This could include helping a classmate, volunteering in the community, creating something to brighten someone's day, or any action that spreads compassion and caring.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">How can teachers incorporate Noah's Kindness Hub into their classroom?</div>
+                <div class="faq-answer">
+                    <p>Teachers can use the hub as a resource for kindness-themed lessons, encourage students to contribute their own acts of kindness, use the stories as writing prompts, or participate in our monthly kindness challenges as a class activity.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="contact-section" style="background-color: #f8f9fa; border-radius: 10px; padding: 30px; margin-bottom: 40px; text-align: center; border-top: 4px solid #4285F4;">
+            <h2>Need Help? Contact Us</h2>
+            <p>If you have questions about contributing or need assistance with your submission, please reach out to us.</p>
+            <div class="contact-options" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin-top: 20px;">
+                <div class="contact-option">
+                    <div class="contact-icon">✉️</div>
+                    <div class="contact-label">Email</div>
+                    <div class="contact-value">
+                        <a href="mailto:gabriel@americascores.org">gabriel@americascores.org</a><br>
+                        <a href="mailto:info@americascores.org">dexiree@americascores.org</a>
+                    </div>
+                </div>
+                <div class="contact-option">
+                    <div class="contact-icon">👤</div>
+                    <div class="contact-label">Project Coordinators</div>
+                    <div class="contact-value">
+                        Mr. Gabriel, Room 26<br>
+                        Ms. Dexi, Room 26
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="privacy-notice" style="background-color: #E8F0FE; border-radius: 10px; padding: 20px; margin-top: 40px; font-size: 0.9rem; color: #555; border-left: 4px solid #FBBC05;">
+            <h3 style="color: #4285F4; margin-top: 0; font-size: 1.1rem;">Privacy Notice</h3>
+            <p>Noah's Kindness Hub respects your privacy. We collect minimal personal information (first name, grade level) for submissions. Please do not include full names or personal contact information in your posts.</p>
+            <p>All content is visible immediately on our Kindness Inspiration Board. Content is archived annually in June, but remains accessible to school administrators.</p>
+            <p>By submitting content, you grant permission for it to be displayed on Noah's Kindness Hub and potentially used in school-related kindness initiatives.</p>
+        </div>
+    </div>
+</body>
+</html>

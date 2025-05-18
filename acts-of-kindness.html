@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acts of Kindness Feed - Noah's Kindness Hub</title>
+    <style>
+        :root {
+            --primary-color: #4285F4;
+            --accent-color: #FBBC05;
+            --green-accent: #34A853;
+            --red-accent: #EA4335;
+            --text-color: #333;
+            --bg-color: #fff;
+            --card-bg: #f8f9fa;
+            --card-border: #e0e0e0;
+            --card-shadow: rgba(0,0,0,0.1);
+        }
+
+        body {
+            font-family: 'Google Sans', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            margin: 0 0 10px 0;
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        h1::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 700px;
+            margin: 20px auto;
+            line-height: 1.6;
+        }
+
+        .feed-layout {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        @media (min-width: 768px) {
+            .feed-layout {
+                flex-direction: row;
+            }
+        }
+
+        .main-feed {
+            flex: 2;
+        }
+
+        .sidebar {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .padlet-container {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px var(--card-shadow);
+        }
+
+        .padlet-container h2 {
+            color: var(--primary-color);
+            margin-top: 0;
+        }
+
+        .embed-container {
+            position: relative;
+            padding-bottom: 150%; /* Taller aspect ratio for Padlet */
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            background-color: #eee;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .embed-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .embed-placeholder {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            background-color: #eee;
+            color: #666;
+        }
+
+        .embed-placeholder p {
+            font-style: italic;
+            margin: 10px 0;
+        }
+
+        .info-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px var(--card-shadow);
+        }
+
+        .info-card h2 {
+            color: var(--primary-color);
+            margin-top: 0;
+            font-size: 1.3rem;
+        }
+
+        .info-card ul {
+            padding-left: 20px;
+            margin: 15px 0;
+        }
+
+        .info-card li {
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        .info-card.guidelines {
+            border-left: 4px solid var(--green-accent);
+        }
+
+        .info-card.categories {
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .category-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .category-tag {
+            background-color: #E8F0FE;
+            color: var(--primary-color);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: inline-block;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .category-tag:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .featured-acts {
+            background-color: #FFF8E1;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px var(--card-shadow);
+            border-left: 4px solid var(--accent-color);
+            margin-top: 30px;
+        }
+
+        .featured-acts h2 {
+            color: var(--primary-color);
+            margin-top: 0;
+        }
+
+        .act-item {
+            padding: 15px 0;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .act-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .act-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+
+        .act-description {
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        .act-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .share-options {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .share-button {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            background: none;
+            border: none;
+            color: var(--primary-color);
+            cursor: pointer;
+            font-size: 0.9rem;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .share-button:hover {
+            background-color: #E8F0FE;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #3367D6; /* Darker blue */
+        }
+
+        .maintenance-note {
+            background-color: #E8F0FE;
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 40px;
+            font-size: 0.9rem;
+            color: #555;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .maintenance-note p {
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .kindness-fact {
+            background-color: #FFF8E1;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px var(--card-shadow);
+            border-left: 4px solid var(--accent-color);
+            margin-top: 30px;
+        }
+
+        .kindness-fact strong {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .spotlight {
+            background-color: #FFF8E1;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px var(--card-shadow);
+            margin-top: 30px;
+        }
+
+        .spotlight h2 {
+            color: var(--primary-color);
+            margin-top: 0;
+        }
+
+        .spotlight p {
+            margin: 10px 0;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Acts of Kindness Feed</h1>
+            <p class="subtitle">Share and discover acts of kindness inspired by Noah's legacy. Every small act of compassion creates ripples that can change our community for the better.</p>
+        </header>
+
+        <div class="feed-layout">
+            <div class="main-feed">
+                <div class="padlet-container">
+                    <h2>Kindness Inspiration Board</h2>
+                    <p>Share your acts of kindness, stories, artwork, or shout-outs! Click the + button to add your post.</p>
+                    <iframe src="https://padlet.com/sanchez27gs/kindness-inspiration-board-2ngltiohmz997jct" style="width:100%;height:600px;border:none;"></iframe>
+                </div>
+                
+                <div class="spotlight" style="background: #FFF8E1; border-left: 4px solid #FBBC05; border-radius: 10px; padding: 20px; margin: 30px 0;">
+                    <h2 style="color: #4285F4; margin-top: 0;">Kindness Spotlight</h2>
+                    <p>
+                        <strong>Beautify Our Campus!</strong><br>
+                        Last week, our students took the initiative to pick up trash around the school as part of a campus beautification effort. Their teamwork and care for our environment made a big difference—thank you to everyone who helped keep our school clean and welcoming!
+                    </p>
+                    <ul style="margin: 15px 0 0 20px; color: #333;">
+                        <li>Picked up litter during recess and after school</li>
+                        <li>Encouraged classmates to recycle</li>
+                    </ul>
+                    <p style="margin-top: 15px; color: #34A853;"><em>Let's keep the kindness going—what will you do this week?</em></p>
+                </div>
+                
+                <div class="kindness-fact">
+                    <strong>Did you know?</strong> 
+                    Kindness is proven to boost happiness for both the giver and the receiver!
+                </div>
+
+                <div class="maintenance-note">
+                    <p><strong>Note:</strong> This Padlet feed is archived each June and refreshed for the new school year. </p>
+                </div>
+            </div>
+            
+            <div class="sidebar">
+                <div class="info-card guidelines">
+                    <h2>Sharing Guidelines</h2>
+                    <ul>
+                        <li><strong>Be specific:</strong> Describe the act of kindness in detail</li>
+                        <li><strong>Be respectful:</strong> Use appropriate language and content</li>
+                        <li><strong>Protect privacy:</strong> Use first names only</li>
+                        <li><strong>Add media:</strong> Include photos when appropriate (and with permission)</li>
+                        <li><strong>Add location:</strong> Note where the act took place (classroom, playground, etc.)</li>
+                    </ul>
+                    
+                    <a href="https://padlet.com/sanchez27gs/kindness-inspiration-board-2ngltiohmz997jct" 
+                       class="cta-button" 
+                       target="_blank" 
+                       rel="noopener">
+                       Share Your Act of Kindness
+                    </a>
+                </div>
+                
+                <div class="info-card categories">
+                    <h2>Kindness Categories</h2>
+                    <ul>
+                        <li><strong>School:</strong> Kindness at school or with classmates</li>
+                        <li><strong>Community:</strong> Kindness in your neighborhood or town</li>
+                        <li><strong>Family:</strong> Kindness at home or with family</li>
+                    </ul>
+                    <p>When you post, please start your message with [School], [Community], or [Family]—or use hashtags like #school, #community, or #family!</p>
+                </div>
+                
+                <div class="info-card">
+                    <h2>Kindness Challenge</h2>
+                    <p>This week's challenge:</p>
+                    <p><strong>"Write an encouraging note to someone who might be having a difficult time."</strong></p>
+                    <p>Complete the challenge and share it on our feed with the tag #KindnessChallenge</p>
+                </div>
+                
+
+                <div class="info-card categories">
+                    <h2>How to Share Your Act of Kindness</h2>
+                    <p>
+                        Click the <strong>+</strong> button under the category that best fits your act of kindness (School, Community, Family, etc.).<br>
+                        Add your story, photo, or artwork to inspire others!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kindness Gallery - Noah's Kindness Hub</title>
+    <style>
+        :root {
+            --primary-color: #4285F4;
+            --accent-color: #FBBC05;
+            --green-accent: #34A853;
+            --red-accent: #EA4335;
+            --text-color: #333;
+            --bg-color: #fff;
+            --card-bg: #f8f9fa;
+            --card-border: #e0e0e0;
+            --card-shadow: rgba(0,0,0,0.1);
+        }
+
+        body {
+            font-family: 'Google Sans', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            margin: 0 0 10px 0;
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        h1::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 700px;
+            margin: 20px auto;
+            line-height: 1.6;
+        }
+
+        .gallery-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            background-color: var(--card-bg);
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .tab.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .tab:hover:not(.active) {
+            border-color: var(--primary-color);
+        }
+
+        .slides-container {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px var(--card-shadow);
+            margin-bottom: 40px;
+        }
+
+        .slides-container h2 {
+            color: var(--primary-color);
+            margin-top: 0;
+        }
+
+        .embed-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            background-color: #eee;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .embed-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .embed-placeholder {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            background-color: #eee;
+            color: #666;
+        }
+
+        .embed-placeholder p {
+            font-style: italic;
+            margin: 10px 0;
+        }
+
+        .gallery-sections {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        @media (min-width: 768px) {
+            .gallery-sections {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .gallery-section {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px var(--card-shadow);
+        }
+
+        .gallery-section h2 {
+            color: var(--primary-color);
+            margin-top: 0;
+        }
+
+        .gallery-section.artwork {
+            border-top: 4px solid var(--green-accent);
+        }
+
+        .gallery-section.testimonials {
+            border-top: 4px solid var(--red-accent);
+        }
+
+        .artwork-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .artwork-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 6px var(--card-shadow);
+            aspect-ratio: 1;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .artwork-item:hover {
+            transform: scale(1.05);
+        }
+
+        .artwork-placeholder {
+            width: 100%;
+            height: 100%;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 0.8rem;
+            text-align: center;
+            padding: 5px;
+        }
+
+        .testimonial {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .testimonial:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            line-height: 1.6;
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .testimonial-text::before {
+            content: """;
+            font-size: 2rem;
+            color: var(--accent-color);
+            position: absolute;
+            left: 0;
+            top: -10px;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .testimonial-context {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .submission-info {
+            background-color: #E8F0FE;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 40px;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .submission-info h2 {
+            color: var(--primary-color);
+            margin-top: 0;
+        }
+
+        .submission-info ul {
+            padding-left: 20px;
+            margin: 15px 0;
+        }
+
+        .submission-info li {
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #3367D6; /* Darker blue */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Kindness Gallery</h1>
+            <p class="subtitle">Explore artwork, photos, and testimonials that celebrate Noah's kindness and inspire our community to continue his legacy of compassion.</p>
+        </header>
+
+        <div class="gallery-tabs">
+            <div class="tab active">All</div>
+            <div class="tab">Photos</div>
+            <div class="tab">Artwork</div>
+            <div class="tab">Kindness Moments</div>
+            <div class="tab">Testimonials</div>
+        </div>
+
+        <div class="slides-container">
+            <h2>Kindness Gallery Slideshow</h2>
+            <p>Browse through our collection of kindness-inspired photos, artwork, and moments. Use the arrows to navigate or click the presentation to view in fullscreen.</p>
+            
+            <div class="embed-container">
+                <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTFecIuL55gfhQ1x2TKLA6lD1t6-OMLv_cwNlPbmSM_KnKXtmAfn6IBhzqHeTeMSVP62xuAJnscxZWF/pubembed?start=false&loop=false&delayms=3000"
+                    frameborder="0"
+                    width="960"
+                    height="569"
+                    allowfullscreen="true"
+                    mozallowfullscreen="true"
+                    webkitallowfullscreen="true"></iframe>
+            </div>
+        </div>
+
+        <div class="gallery-sections">
+            <div class="gallery-section artwork">
+                <h2>Featured Artwork</h2>
+                <p>Creative expressions of kindness inspired by Noah's legacy, created by students from all grade levels.</p>
+                
+                <div class="artwork-grid">
+                    <!-- These are placeholders - replace with actual artwork thumbnails -->
+                    <div class="artwork-item">
+                        <div class="artwork-placeholder">Kindness Tree</div>
+                    </div>
+                    <div class="artwork-item">
+                        <div class="artwork-placeholder">Helping Hands</div>
+                    </div>
+                    <div class="artwork-item">
+                        <div class="artwork-placeholder">Friendship Bracelet</div>
+                    </div>
+                    <div class="artwork-item">
+                        <div class="artwork-placeholder">Kindness Rocks</div>
+                    </div>
+                    <div class="artwork-item">
+                        <div class="artwork-placeholder">Heart Collage</div>
+                    </div>
+                    <div class="artwork-item">
+                        <div class="artwork-placeholder">Kindness Poster</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="gallery-section testimonials">
+                <h2>Student Testimonials</h2>
+                <p>Reflections on how Noah's kindness has inspired others to spread compassion.</p>
+                
+                <div class="testimonial">
+                    <div class="testimonial-text">Noah taught me that even small acts of kindness can make someone's whole day better. Now I try to do at least one kind thing every day.</div>
+                    <div class="testimonial-author">Sophia L.</div>
+                    <div class="testimonial-context">7th Grade Student</div>
+                </div>
+                
+                <div class="testimonial">
+                    <div class="testimonial-text">I never met Noah, but his story inspired me to start a kindness club at our school. His legacy lives on through all the people he's inspired.</div>
+                    <div class="testimonial-author">Ethan M.</div>
+                    <div class="testimonial-context">6th Grade Student</div>
+                </div>
+                
+                <div class="testimonial">
+                    <div class="testimonial-text">The kindness project has changed our school culture. Students are more aware of how their actions affect others, and there's a real effort to include everyone.</div>
+                    <div class="testimonial-author">Ms. Rivera</div>
+                    <div class="testimonial-context">School Counselor</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="submission-info">
+            <h2>Submit Your Work</h2>
+            <p>We welcome submissions to our Kindness Gallery from students, teachers, and community members.</p>
+            
+            <ul>
+                <li><strong>Photos:</strong> Share images of kindness in action or moments that remind you of Noah's spirit</li>
+                <li><strong>Artwork:</strong> Submit drawings, paintings, digital art, or other creative expressions of kindness</li>
+                <li><strong>Kindness Moments:</strong> Document acts of kindness you've witnessed or performed</li>
+                <li><strong>Testimonials:</strong> Share how Noah or this project has inspired you</li>
+            </ul>
+            
+            <p>All submissions will be reviewed before being added to the gallery. Please include your first name and grade level with your submission.</p>
+            
+            <a href="#" class="cta-button">Submit to Gallery</a>
+        </div>
+    </div>
+</body>
+</html>

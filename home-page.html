@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noah's Kindness Hub</title>
+    <style>
+        :root {
+            --primary-color: #4285F4;
+            --accent-color: #FBBC05;
+            --green-accent: #34A853;
+            --red-accent: #EA4335;
+            --text-color: #333;
+            --bg-color: #fff;
+            --card-bg: #f8f9fa;
+            --card-border: #e0e0e0;
+            --card-shadow: rgba(0,0,0,0.1);
+        }
+
+        body {
+            font-family: 'Google Sans', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            background-color: #E8F0FE;
+            border-radius: 0 0 30px 30px;
+            overflow: hidden;
+            padding: 60px 0;
+            margin-bottom: 50px;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color), var(--green-accent), var(--red-accent));
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (min-width: 768px) {
+            .hero-content {
+                flex-direction: row;
+                text-align: left;
+                gap: 40px;
+            }
+        }
+
+        .hero-text {
+            flex: 1.5;
+            padding: 20px;
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 400px;  /* Fixed width for hero image container */
+            width: 100%;
+            height: 400px;     /* Fixed height for hero image container */
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            background: white;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 15px;
+            transition: opacity 0.3s ease;
+        }
+
+        .hero-image img.loading {
+            opacity: 0;
+        }
+
+        .hero-image img.loaded {
+            opacity: 1;
+        }
+
+        .site-title {
+            font-size: 2.8rem;
+            color: var(--primary-color);
+            margin: 0 0 15px 0;
+            line-height: 1.2;
+        }
+
+        .site-subtitle {
+            font-size: 1.3rem;
+            color: #555;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+            justify-content: center;
+        }
+
+        @media (min-width: 768px) {
+            .hero-buttons {
+                justify-content: flex-start;
+            }
+        }
+
+        .hero-button {
+            display: inline-block;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .primary-button {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .primary-button:hover {
+            background-color: #3367D6;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(66, 133, 244, 0.3);
+        }
+
+        .secondary-button {
+            background-color: white;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .secondary-button:hover {
+            background-color: #f0f7ff;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(66, 133, 244, 0.1);
+        }
+
+        /* Navigation Section */
+        .nav-section {
+            margin-bottom: 50px;
+        }
+
+        .nav-title {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+        }
+
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .nav-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px var(--card-shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .nav-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px var(--card-shadow);
+        }
+
+        .nav-card-header {
+            height: 8px;
+            background-color: var(--primary-color);
+        }
+
+        .nav-card:nth-child(2) .nav-card-header {
+            background-color: var(--accent-color);
+        }
+
+        .nav-card:nth-child(3) .nav-card-header {
+            background-color: var(--green-accent);
+        }
+
+        .nav-card:nth-child(4) .nav-card-header {
+            background-color: var(--red-accent);
+        }
+
+        .nav-card:nth-child(5) .nav-card-header {
+            background-color: #9C27B0;
+        }
+
+        .nav-card:nth-child(6) .nav-card-header {
+            background-color: #009688;
+        }
+
+        .nav-card:nth-child(7) .nav-card-header {
+            background-color: #FF5722;
+        }
+
+        .nav-card-content {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            flex-grow: 1;
+        }
+
+        .nav-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .nav-card:nth-child(2) .nav-icon {
+            color: var(--accent-color);
+        }
+
+        .nav-card:nth-child(3) .nav-icon {
+            color: var(--green-accent);
+        }
+
+        .nav-card:nth-child(4) .nav-icon {
+            color: var(--red-accent);
+        }
+
+        .nav-card:nth-child(5) .nav-icon {
+            color: #9C27B0;
+        }
+
+        .nav-card:nth-child(6) .nav-icon {
+            color: #009688;
+        }
+
+        .nav-card:nth-child(7) .nav-icon {
+            color: #FF5722;
+        }
+
+        .nav-card-title {
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .nav-card-description {
+            color: #666;
+            line-height: 1.5;
+            font-size: 0.9rem;
+        }
+
+        /* Featured Kindness Section */
+        .featured-section {
+            margin-bottom: 50px;
+            background-color: #FFF8E1;
+            border-radius: 15px;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .featured-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background-color: var(--accent-color);
+        }
+
+        .featured-title {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+        }
+
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .featured-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .featured-image {
+            height: 200px;          /* Fixed height for featured card images */
+            overflow: hidden;
+            background: #f5f5f5;     /* Light gray background while image loads */
+        }
+
+        .featured-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;      /* Ensures image covers the container without distortion */
+            object-position: center; /* Centers the image */
+        }
+
+        .featured-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .featured-tag {
+            display: inline-block;
+            background-color: #E8F0FE;
+            color: var(--primary-color);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+        }
+
+        .featured-card-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .featured-description {
+            color: #555;
+            line-height: 1.5;
+            font-size: 0.9rem;
+            flex-grow: 1;
+        }
+
+        .featured-meta {
+            margin-top: 15px;
+            font-size: 0.8rem;
+            color: #777;
+        }
+
+        .view-all-button {
+            display: block;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        /* QR Code Section */
+        .qr-section {
+            margin-bottom: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 30px;
+        }
+
+        @media (min-width: 768px) {
+            .qr-section {
+                flex-direction: row;
+            }
+        }
+
+        .qr-content {
+            flex: 2;
+        }
+
+        .qr-title {
+            color: var(--primary-color);
+            margin-top: 0;
+            font-size: 1.8rem;
+        }
+
+        .qr-description {
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .qr-steps {
+            margin: 20px 0;
+            padding-left: 20px;
+        }
+
+        .qr-steps li {
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        .qr-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .qr-placeholder {
+            width: 200px;
+            height: 200px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-style: italic;
+            border: 5px solid white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Quote Section */
+        .quote-section {
+            margin-bottom: 50px;
+            text-align: center;
+            padding: 40px 20px;
+            position: relative;
+        }
+
+        .quote-text {
+            font-size: 1.8rem;
+            font-style: italic;
+            color: var(--primary-color);
+            max-width: 800px;
+            margin: 0 auto 20px;
+            position: relative;
+            line-height: 1.4;
+        }
+
+        .quote-text::before,
+        .quote-text::after {
+            content: """;
+            font-size: 4rem;
+            color: var(--primary-color);
+            opacity: 0.2;
+            position: absolute;
+            line-height: 1;
+        }
+
+        .quote-text::before {
+            top: -20px;
+            left: -20px;
+        }
+
+        .quote-text::after {
+            content: """;
+            bottom: -40px;
+            right: -20px;
+        }
+
+        .quote-author {
+            font-weight: bold;
+            color: #555;
+        }
+
+        /* Footer Section */
+        .footer-section {
+            background-color: #E8F0FE;
+            padding: 30px 0;
+            text-align: center;
+            border-radius: 15px 15px 0 0;
+            margin-top: 50px;
+        }
+
+        .footer-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .footer-title {
+            color: var(--primary-color);
+            margin-top: 0;
+        }
+
+        .footer-description {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .footer-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: #3367D6;
+            text-decoration: underline;
+        }
+
+        .footer-credit {
+            font-size: 0.9rem;
+            color: #777;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="site-title">Noah's Kindness Hub</h1>
+                    <p class="site-subtitle">Welcome to Noah's Kindness Hub, a student created space that keeps our friend Noah's spirit alive through everyday acts of caring and inclusion. Here you'll find short tribute videos, artwork, and a live feed of good deeds. All created by classmates who believe one small kindness can grow into something big. Scan, explore, and add your own spark of kindness to keep the circle going.</p>
+                    <div class="hero-buttons">
+                        <a href="#" class="hero-button primary-button">Explore the Hub</a>
+                        <a href="#" class="hero-button secondary-button">Share Your Kindness</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="https://drive.google.com/thumbnail?id=1zRWr2M3EruF73WjKFAAGRDBE6drkRah8&sz=w800" alt="Noah's Photo">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <section class="nav-section">
+            <h2 class="nav-title">Explore Our Kindness Hub</h2>
+            <div class="nav-grid">
+                <a href="https://sites.google.com/view/noah-kindness-hub/about-noah" class="nav-card">
+                    <div class="nav-card-header"></div>
+                    <div class="nav-card-content">
+                        <div class="nav-icon">👤</div>
+                        <div class="nav-card-title">About Noah</div>
+                        <div class="nav-card-description">Learn about Noah's life, his impact on our community, and the kindness legacy he left behind.</div>
+                    </div>
+                </a>
+                
+                <a href="https://sites.google.com/view/noah-kindness-hub/kindness-gallery" class="nav-card">
+                    <div class="nav-card-header"></div>
+                    <div class="nav-card-content">
+                        <div class="nav-icon">🖼️</div>
+                        <div class="nav-card-title">Kindness Gallery</div>
+                        <div class="nav-card-description">Explore photos, artwork, and creative expressions inspired by Noah's kindness.</div>
+                    </div>
+                </a>
+                
+                <a href="https://sites.google.com/view/noah-kindness-hub/acts-of-kindness-feed" class="nav-card">
+                    <div class="nav-card-header"></div>
+                    <div class="nav-card-content">
+                        <div class="nav-icon">📝</div>
+                        <div class="nav-card-title">Acts of Kindness</div>
+                        <div class="nav-card-description">Discover and share acts of kindness happening in our school and community.</div>
+                    </div>
+                </a>
+                
+                <a href="https://sites.google.com/view/noah-kindness-hub/inspiration-stories" class="nav-card">
+                    <div class="nav-card-header"></div>
+                    <div class="nav-card-content">
+                        <div class="nav-icon">✨</div>
+                        <div class="nav-card-title">Inspiration Stories</div>
+                        <div class="nav-card-description">Read inspiring stories of kindness from around the world that motivate us to be better.</div>
+                    </div>
+                </a>
+                
+                <a href="https://sites.google.com/view/noah-kindness-hub/how-to-contribute" class="nav-card">
+                    <div class="nav-card-header"></div>
+                    <div class="nav-card-content">
+                        <div class="nav-icon">🤝</div>
+                        <div class="nav-card-title">Contribute</div>
+                        <div class="nav-card-description">Learn how you can contribute to Noah's Kindness Hub and spread compassion.</div>
+                    </div>
+                </a>
+                
+                <a href="https://sites.google.com/view/noah-kindness-hub/credits-thanks" class="nav-card">
+                    <div class="nav-card-header"></div>
+                    <div class="nav-card-content">
+                        <div class="nav-icon">❤️</div>
+                        <div class="nav-card-title">Credits & Thanks</div>
+                        <div class="nav-card-description">Recognizing everyone who has contributed to making this kindness hub possible.</div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section class="featured-section">
+            <h2 class="featured-title">Student Reflections on Kindness</h2>
+            <div class="featured-grid">
+                <div class="featured-card">
+                    <div class="featured-image">
+                        <img src="Images/IMG_3880.jpeg" alt="What is Kindness by Elodie and Penny">
+                    </div>
+                    <div class="featured-content">
+                        <span class="featured-tag">Student Voice</span>
+                        <h3 class="featured-card-title">What Kindness Means</h3>
+                        <p class="featured-description">"Kindness is going out of your way to make someone's day better." — Elodie & Penny, 5th Grade</p>
+                        <div class="featured-meta">May 13, 2025</div>
+                    </div>
+                </div>
+                <div class="featured-card">
+                    <div class="featured-image">
+                        <img src="Images/IMG_3879.jpeg" alt="What is Kindness by London">
+                    </div>
+                    <div class="featured-content">
+                        <span class="featured-tag">Student Voice</span>
+                        <h3 class="featured-card-title">Kindness in Action</h3>
+                        <p class="featured-description">"Treating people the same, being respectful, helping someone, being kind, taking turns." — London, 5th Grade</p>
+                        <div class="featured-meta">May 13, 2025</div>
+                    </div>
+                </div>
+            </div>
+            <a href="#" class="hero-button secondary-button view-all-button">View All Student Reflections</a>
+        </section>
+
+        <section class="qr-section">
+            <div class="qr-content">
+                <h2 class="qr-title">Scan & Share Our Kindness Hub</h2>
+                <p class="qr-description">Help spread Noah's legacy of kindness by sharing our Kindness Hub with others. Scan the QR code to visit our site or share it with friends, family, and community members.</p>
+                <ol class="qr-steps">
+                    <li>Scan the QR code with your smartphone camera</li>
+                    <li>Visit the Kindness Hub website</li>
+                    <li>Explore the content and get inspired</li>
+                    <li>Share your own acts of kindness</li>
+                    <li>Spread the word by sharing the QR code with others</li>
+                </ol>
+            </div>
+            <div class="qr-image">
+                <img src="https://drive.google.com/thumbnail?id=139u88gTVewcxhUwAeoedrZmq62y6wg2W&sz=w200" alt="QR Code for Noah's Kindness Hub" style="width: 200px; height: 200px; object-fit: contain;">
+            </div>
+        </section>
+
+        <section class="quote-section">
+            <p class="quote-text">Kindness is the language which the deaf can hear and the blind can see.</p>
+            <p class="quote-author">— Mark Twain</p>
+        </section>
+    </div>
+
+    <footer class="footer-section">
+        <div class="container">
+            <div class="footer-content">
+                <h3 class="footer-title">Noah's Kindness Hub</h3>
+                <p class="footer-description">A memorial project dedicated to continuing Noah's legacy of kindness and compassion in our school and community.</p>
+                <div class="footer-links">
+                    <a href="https://sites.google.com/view/noah-kindness-hub/about-noah" class="footer-link">About Noah</a>
+                    <a href="https://sites.google.com/view/noah-kindness-hub/kindness-gallery" class="footer-link">Kindness Gallery</a>
+                    <a href="https://sites.google.com/view/noah-kindness-hub/acts-of-kindness-feed" class="footer-link">Acts of Kindness</a>
+                    <a href="https://sites.google.com/view/noah-kindness-hub/inspiration-stories" class="footer-link">Inspiration Stories</a>
+                    <a href="https://sites.google.com/view/noah-kindness-hub/how-to-contribute" class="footer-link">Contribute</a>
+                    <a href="https://sites.google.com/view/noah-kindness-hub/credits-thanks" class="footer-link">Credits & Thanks</a>
+                </div>
+                <p class="footer-credit">© 2023 Noah's Kindness Hub | Created by Students & Staff</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const images = document.querySelectorAll('.hero-image img, .qr-image img');
+        images.forEach(img => {
+            img.classList.add('loading');
+            img.onload = function() {
+                img.classList.remove('loading');
+                img.classList.add('loaded');
+            }
+        });
+    });
+    </script>
+</body>
+</html> 

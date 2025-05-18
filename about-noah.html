@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Noah - Noah's Kindness Hub</title>
+    <style>
+        :root {
+            --primary-color: #4285F4;
+            --accent-color: #FBBC05;
+            --green-accent: #34A853;
+            --red-accent: #EA4335;
+            --text-color: #333;
+            --bg-color: #fff;
+            --card-bg: #f8f9fa;
+            --card-border: #e0e0e0;
+            --card-shadow: rgba(0,0,0,0.1);
+        }
+
+        body {
+            font-family: 'Google Sans', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            margin: 0 0 10px 0;
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        h1::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        .about-section {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 8px var(--card-shadow);
+        }
+
+        .about-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #444;
+            margin-bottom: 30px;
+        }
+
+        .favorites-section {
+            background-color: #E8F0FE;
+            border-radius: 10px;
+            padding: 30px;
+            margin-top: 40px;
+        }
+
+        .favorites-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .favorite-item {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px var(--card-shadow);
+        }
+
+        .favorite-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .favorite-title {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .favorite-description {
+            color: #666;
+        }
+
+        .quote-banner {
+            background-color: #E8F0FE;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 40px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .quote-text {
+            font-size: 1.5rem;
+            font-style: italic;
+            color: var(--primary-color);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about-photo {
+            display: block;
+            margin: 0 auto 30px auto;
+            max-width: 300px;
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.13);
+            border: 3px solid var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>About Noah</h1>
+        </header>
+
+        <div class="about-section">
+            <img src="Images/noah-2.jpeg" alt="Noah Reyes smiling" class="about-photo">
+            <p class="about-text">
+                Noah Reyes was a sixth-grader whose warm smile and genuine kindness touched the lives of everyone around him. His natural ability to make others feel welcome and valued created a positive atmosphere wherever he went. Though his time with us was brief, Noah's spirit of compassion and his commitment to making others feel included continues to inspire our school community.
+            </p>
+            <p class="about-text">
+                This Kindness Hub was created to honor Noah's memory and continue his legacy of spreading joy and kindness. Through sharing stories of compassion and encouraging acts of kindness, we hope to keep his spirit alive and create a more caring world.
+            </p>
+        </div>
+
+        <div class="quote-banner">
+            <p class="quote-text">"The smallest act of kindness is worth more than the grandest intention."</p>
+        </div>
+
+        <div class="favorites-section">
+            <h2>Noah's Favorites</h2>
+            <div class="favorites-grid">
+                <div class="favorite-item">
+                    <div class="favorite-icon">🎵</div>
+                    <div class="favorite-title">Music</div>
+                    <div class="favorite-description">2Pac was his favorite artist, whose powerful lyrics and messages resonated with him.</div>
+                </div>
+
+                <div class="favorite-item">
+                    <div class="favorite-icon">🏀</div>
+                    <div class="favorite-title">Sports</div>
+                    <div class="favorite-description">Basketball was his passion, and he was a dedicated Golden State Warriors fan.</div>
+                </div>
+
+                <div class="favorite-item">
+                    <div class="favorite-icon">🧢</div>
+                    <div class="favorite-title">Style</div>
+                    <div class="favorite-description">He was known for always wearing his favorite beanie, making it his signature look.</div>
+                </div>
+
+                <div class="favorite-item">
+                    <div class="favorite-icon">❤️</div>
+                    <div class="favorite-title">Color</div>
+                    <div class="favorite-description">Red was his favorite color, reflecting his vibrant personality.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
