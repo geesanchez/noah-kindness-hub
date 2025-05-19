@@ -3,272 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn about Noah's life, legacy, and the impact he had on our community. Discover how his kindness continues to inspire others.">
+    <meta name="keywords" content="Noah, kindness, legacy, memorial, community, inspiration">
+    <meta name="author" content="Noah's Kindness Hub">
+    <meta name="theme-color" content="#4285F4">
+    
     <title>About Noah - Noah's Kindness Hub</title>
-    <style>
-        :root {
-            --primary-color: #4285F4;
-            --accent-color: #FBBC05;
-            --green-accent: #34A853;
-            --red-accent: #EA4335;
-            --text-color: #333;
-            --bg-color: #fff;
-            --card-bg: #f8f9fa;
-            --card-border: #e0e0e0;
-            --card-shadow: rgba(0,0,0,0.1);
-        }
-
-        .dark-mode {
-            --primary-color: #8ab4f8;
-            --accent-color: #fdd663;
-            --green-accent: #81c995;
-            --red-accent: #f28b82;
-            --text-color: #e0e0e0;
-            --bg-color: #202124;
-            --card-bg: #303134;
-            --card-border: #5f6368;
-            --card-shadow: rgba(0,0,0,0.3);
-        }
-
-        body {
-            font-family: 'Google Sans', Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            transition: all 0.3s ease;
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        h1 {
-            color: var(--primary-color);
-            margin: 0 0 10px 0;
-            font-size: 2.5rem;
-            position: relative;
-            display: inline-block;
-        }
-
-        h1::after {
-            content: "";
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background-color: var(--accent-color);
-            border-radius: 2px;
-        }
-
-        .about-section {
-            background-color: var(--card-bg);
-            border-radius: 10px;
-            padding: 30px;
-            margin-bottom: 40px;
-            box-shadow: 0 4px 8px var(--card-shadow);
-        }
-
-        .about-text {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            color: #444;
-            margin-bottom: 30px;
-        }
-
-        .favorites-section {
-            background-color: #E8F0FE;
-            border-radius: 10px;
-            padding: 30px;
-            margin-top: 40px;
-        }
-
-        .favorites-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .favorite-item {
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px var(--card-shadow);
-        }
-
-        .favorite-icon {
-            font-size: 2rem;
-            margin-bottom: 10px;
-            color: var(--primary-color);
-        }
-
-        .favorite-title {
-            font-weight: bold;
-            color: var(--primary-color);
-            margin-bottom: 5px;
-        }
-
-        .favorite-description {
-            color: #666;
-        }
-
-        .quote-banner {
-            background-color: #E8F0FE;
-            padding: 30px;
-            border-radius: 10px;
-            margin: 40px 0;
-            text-align: center;
-            position: relative;
-        }
-
-        .quote-text {
-            font-size: 1.5rem;
-            font-style: italic;
-            color: var(--primary-color);
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .about-photo {
-            display: block;
-            margin: 0 auto 30px auto;
-            max-width: 300px;
-            width: 100%;
-            border-radius: 16px;
-            box-shadow: 0 6px 18px rgba(0,0,0,0.13);
-            border: 3px solid var(--primary-color);
-        }
-
-        .main-navbar {
-            background: #E8F0FE;
-            border-bottom: 2px solid #4285F4;
-            padding: 0;
-            margin-bottom: 0;
-            transition: all 0.3s ease;
-        }
-        .dark-mode .main-navbar {
-            background: #303134;
-            border-bottom: 2px solid #8ab4f8;
-        }
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 20px;
-            height: 60px;
-        }
-        .nav-logo {
-            font-weight: bold;
-            color: #4285F4;
-            font-size: 1.3rem;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        .dark-mode .nav-logo {
-            color: #8ab4f8;
-        }
-        .nav-links a {
-            color: #333;
-            text-decoration: none;
-            margin-left: 25px;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-        .dark-mode .nav-links a {
-            color: #e0e0e0;
-        }
-        .nav-links a:hover {
-            color: #4285F4;
-        }
-        .dark-mode .nav-links a:hover {
-            color: #8ab4f8;
-        }
-        @media (max-width: 700px) {
-            .nav-container {
-                flex-direction: column;
-                align-items: flex-start;
-                height: auto;
-                padding: 10px 10px;
-            }
-            .nav-links {
-                display: flex;
-                flex-direction: column;
-                width: 100%;
-            }
-            .nav-links a {
-                margin: 10px 0 0 0;
-            }
-        }
-        body > .container:first-of-type {
-            margin-top: 0 !important;
-        }
-        .toggle-container {
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        .toggle-switch {
-            position: relative;
-            display: inline-block;
-            width: 60px;
-            height: 34px;
-        }
-        .toggle-switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #ccc;
-            transition: .4s;
-            border-radius: 34px;
-        }
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 26px;
-            width: 26px;
-            left: 4px;
-            bottom: 4px;
-            background-color: white;
-            transition: .4s;
-            border-radius: 50%;
-        }
-        input:checked + .slider {
-            background-color: var(--primary-color);
-        }
-        input:checked + .slider:before {
-            transform: translateX(26px);
-        }
-        .toggle-label {
-            margin-right: 10px;
-            line-height: 34px;
-            color: var(--text-color);
-        }
-    </style>
-    <!-- Bootstrap CSS -->
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+    
+    <!-- CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="components.css">
+    <link rel="stylesheet" href="layout.css">
+    <link rel="stylesheet" href="about.css">
+    
+    <!-- Preload critical assets -->
+    <link rel="preload" href="styles.css" as="style">
+    <link rel="preload" href="components.css" as="style">
+    <link rel="preload" href="layout.css" as="style">
+    <link rel="preload" href="about.css" as="style">
+    <link rel="preload" href="script.js" as="script">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light main-navbar">
@@ -279,7 +36,7 @@
             </button>
             <div class="collapse navbar-collapse" id="mainNavbar">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0 nav-links">
-                    <li class="nav-item"><a class="nav-link" href="about-noah.html">About Noah</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="about-noah.html">About Noah</a></li>
                     <li class="nav-item"><a class="nav-link" href="kindness-gallery.html">Kindness Gallery</a></li>
                     <li class="nav-item"><a class="nav-link" href="acts-of-kindness.html">Acts of Kindness</a></li>
                     <li class="nav-item"><a class="nav-link" href="inspiration-stories.html">Inspiration Stories</a></li>
@@ -289,74 +46,96 @@
             </div>
         </div>
     </nav>
+
     <div class="container">
-        <div class="toggle-container">
-            <span class="toggle-label">Dark Mode</span>
-            <label class="toggle-switch">
-                <input type="checkbox" id="darkModeToggle">
-                <span class="slider"></span>
-            </label>
-        </div>
         <header>
             <h1>About Noah</h1>
+            <p class="subtitle">Remembering a life filled with kindness and compassion</p>
         </header>
 
-        <div class="about-section">
-            <img src="Images/noah-2.jpeg" alt="Noah Reyes smiling" class="about-photo">
-            <p class="about-text">
-                Noah Reyes was a sixth-grader whose warm smile and genuine kindness touched the lives of everyone around him. His natural ability to make others feel welcome and valued created a positive atmosphere wherever he went. Though his time with us was brief, Noah's spirit of compassion and his commitment to making others feel included continues to inspire our school community.
-            </p>
-            <p class="about-text">
-                This Kindness Hub was created to honor Noah's memory and continue his legacy of spreading joy and kindness. Through sharing stories of compassion and encouraging acts of kindness, we hope to keep his spirit alive and create a more caring world.
-            </p>
+        <div class="about-grid">
+            <div class="about-card">
+                <div class="about-icon">👼</div>
+                <h2>His Story</h2>
+                <p>Noah was a bright and caring young student who brought joy to everyone around him. His infectious smile and kind heart made him a beloved member of our school community.</p>
+                <p>Though his time with us was brief, his impact continues to inspire acts of kindness and compassion throughout our school and beyond.</p>
+            </div>
+
+            <div class="about-card">
+                <div class="about-icon">💝</div>
+                <h2>His Legacy</h2>
+                <p>Noah's legacy lives on through the countless acts of kindness performed in his memory. His spirit of generosity and compassion continues to touch lives and bring our community together.</p>
+                <p>This hub serves as a living memorial to his beautiful soul and the positive impact he had on all who knew him.</p>
+            </div>
+
+            <div class="about-card">
+                <div class="about-icon">🌟</div>
+                <h2>His Impact</h2>
+                <p>Through this kindness hub, we honor Noah's memory by encouraging others to spread kindness and positivity in their daily lives.</p>
+                <p>Each act of kindness shared here helps keep his spirit alive and creates a ripple effect of compassion throughout our community.</p>
+            </div>
         </div>
 
-        <div class="quote-banner">
-            <p class="quote-text">"The smallest act of kindness is worth more than the grandest intention."</p>
-        </div>
-
-        <div class="favorites-section">
-            <h2>Noah's Favorites</h2>
-            <div class="favorites-grid">
-                <div class="favorite-item">
-                    <div class="favorite-icon">🎵</div>
-                    <div class="favorite-title">Music</div>
-                    <div class="favorite-description">2Pac was his favorite artist, whose powerful lyrics and messages resonated with him.</div>
+        <div class="memorial-section">
+            <h2>The Memorial Project</h2>
+            <p>Noah's Kindness Hub was created as a digital memorial to honor his memory and continue his legacy of kindness. This project brings together students, teachers, and community members to share stories, artwork, and acts of kindness inspired by Noah's spirit.</p>
+            <div class="memorial-features">
+                <div class="feature">
+                    <div class="feature-icon">🎨</div>
+                    <h3>Kindness Gallery</h3>
+                    <p>View artwork and photos created in Noah's memory</p>
                 </div>
-
-                <div class="favorite-item">
-                    <div class="favorite-icon">🏀</div>
-                    <div class="favorite-title">Sports</div>
-                    <div class="favorite-description">Basketball was his passion, and he was a dedicated Golden State Warriors fan.</div>
+                <div class="feature">
+                    <div class="feature-icon">📝</div>
+                    <h3>Inspiration Stories</h3>
+                    <p>Read and share stories of kindness</p>
                 </div>
-
-                <div class="favorite-item">
-                    <div class="favorite-icon">🧢</div>
-                    <div class="favorite-title">Style</div>
-                    <div class="favorite-description">He was known for always wearing his favorite beanie, making it his signature look.</div>
-                </div>
-
-                <div class="favorite-item">
-                    <div class="favorite-icon">❤️</div>
-                    <div class="favorite-title">Color</div>
-                    <div class="favorite-description">Red was his favorite color, reflecting his vibrant personality.</div>
+                <div class="feature">
+                    <div class="feature-icon">💫</div>
+                    <h3>Acts of Kindness</h3>
+                    <p>Discover ways to spread kindness in your community</p>
                 </div>
             </div>
         </div>
+
+        <div class="tribute-section">
+            <h2>A Tribute to Noah</h2>
+            <div class="tribute-content">
+                <div class="tribute-text">
+                    <p>Noah's kindness knew no bounds. He was always ready to help others, share a smile, or offer words of encouragement. His gentle spirit and caring nature made him a friend to everyone he met.</p>
+                    <p>Through this hub, we hope to inspire others to follow in Noah's footsteps by spreading kindness and compassion in their own lives. Each act of kindness shared here helps keep his memory alive and creates a lasting legacy of love and generosity.</p>
+                </div>
+                <div class="tribute-image">
+                    <img src="images/noah-4.jpeg" alt="Noah" class="memorial-image">
+                </div>
+            </div>
+        </div>
+
+        <div class="get-involved-section">
+            <h2>Get Involved</h2>
+            <p>Help us continue Noah's legacy by participating in our kindness initiatives. There are many ways to get involved:</p>
+            <div class="involvement-options">
+                <a href="acts-of-kindness.html" class="involvement-card">
+                    <div class="involvement-icon">💫</div>
+                    <h3>Share an Act of Kindness</h3>
+                    <p>Tell us about a kind act you've performed or witnessed</p>
+                </a>
+                <a href="kindness-gallery.html" class="involvement-card">
+                    <div class="involvement-icon">🎨</div>
+                    <h3>Submit to the Gallery</h3>
+                    <p>Share artwork or photos inspired by kindness</p>
+                </a>
+                <a href="inspiration-stories.html" class="involvement-card">
+                    <div class="involvement-icon">📝</div>
+                    <h3>Share Your Story</h3>
+                    <p>Write about how kindness has touched your life</p>
+                </a>
+            </div>
+        </div>
     </div>
-    <script>
-    // Dark mode toggle functionality
-    const darkModeToggle = document.getElementById('darkModeToggle');
-    // Check for saved preference
-    const savedDarkMode = localStorage.getItem('darkMode') === 'true';
-    darkModeToggle.checked = savedDarkMode;
-    document.body.classList.toggle('dark-mode', savedDarkMode);
-    darkModeToggle.addEventListener('change', function() {
-        document.body.classList.toggle('dark-mode', this.checked);
-        localStorage.setItem('darkMode', this.checked);
-    });
-    </script>
-    <!-- Bootstrap JS Bundle (with Popper) -->
+
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js" defer></script>
 </body>
 </html>

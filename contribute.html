@@ -3,463 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contribute to Noah's Kindness Hub - Share your acts of kindness, stories, and help spread positivity in our community.">
+    <meta name="keywords" content="kindness, community, contribution, acts of kindness, Noah's Kindness Hub">
+    <meta name="author" content="Noah's Kindness Hub">
+    <meta name="theme-color" content="#4285F4">
+    
     <title>Contribute - Noah's Kindness Hub</title>
-    <style>
-        :root {
-            --primary-color: #4285F4;
-            --accent-color: #FBBC05;
-            --green-accent: #34A853;
-            --red-accent: #EA4335;
-            --text-color: #333;
-            --bg-color: #fff;
-            --card-bg: #f8f9fa;
-            --card-border: #e0e0e0;
-            --card-shadow: rgba(0,0,0,0.1);
-        }
-
-        .dark-mode {
-            --primary-color: #8ab4f8;
-            --accent-color: #fdd663;
-            --green-accent: #81c995;
-            --red-accent: #f28b82;
-            --text-color: #e0e0e0;
-            --bg-color: #202124;
-            --card-bg: #303134;
-            --card-border: #5f6368;
-            --card-shadow: rgba(0,0,0,0.3);
-        }
-
-        body {
-            font-family: 'Google Sans', Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            transition: all 0.3s ease;
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        h1 {
-            color: var(--primary-color);
-            margin: 0 0 10px 0;
-            font-size: 2.5rem;
-            position: relative;
-            display: inline-block;
-        }
-
-        h1::after {
-            content: "";
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background-color: var(--accent-color);
-            border-radius: 2px;
-        }
-
-        .subtitle {
-            font-size: 1.2rem;
-            color: #666;
-            max-width: 700px;
-            margin: 20px auto;
-            line-height: 1.6;
-        }
-
-        .ways-to-contribute {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 30px;
-            margin-bottom: 40px;
-        }
-
-        @media (min-width: 768px) {
-            .ways-to-contribute {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-
-        .contribute-card {
-            background-color: var(--card-bg);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 8px var(--card-shadow);
-            transition: transform 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-
-        .contribute-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .card-header {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .contribute-card:nth-child(1) .card-header,
-        .contribute-card:nth-child(1) .cta-button {
-            background-color: var(--primary-color) !important;
-            color: #fff !important;
-        }
-
-        .contribute-card:nth-child(2) .card-header,
-        .contribute-card:nth-child(2) .cta-button {
-            background-color: var(--green-accent) !important;
-            color: #fff !important;
-        }
-
-        .contribute-card:nth-child(3) .card-header,
-        .contribute-card:nth-child(3) .cta-button {
-            background-color: var(--accent-color) !important;
-            color: #fff !important;
-        }
-
-        .card-icon {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
-
-        .card-title {
-            font-size: 1.3rem;
-            margin: 0;
-        }
-
-        .card-content {
-            padding: 20px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .card-description {
-            margin-bottom: 20px;
-            line-height: 1.6;
-            flex-grow: 1;
-        }
-
-        .card-steps {
-            margin: 0;
-            padding-left: 20px;
-        }
-
-        .card-steps li {
-            margin-bottom: 10px;
-            line-height: 1.5;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background-color: var(--primary-color);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: bold;
-            margin-top: auto;
-            align-self: flex-start;
-            transition: background-color 0.3s ease;
-        }
-
-        .cta-button:hover {
-            opacity: 0.9;
-        }
-
-        .guidelines-section {
-            background-color: #E8F0FE;
-            border-radius: 10px;
-            padding: 30px;
-            margin-bottom: 40px;
-        }
-
-        .guidelines-section h2 {
-            color: var(--primary-color);
-            margin-top: 0;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .guidelines-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-        }
-
-        @media (min-width: 768px) {
-            .guidelines-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        .guideline-card {
-            background-color: white;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-
-        .guideline-title {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 15px;
-            color: var(--primary-color);
-            font-weight: bold;
-        }
-
-        .guideline-icon {
-            width: 30px;
-            height: 30px;
-            background-color: var(--primary-color);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-        }
-
-        .guideline-content {
-            line-height: 1.6;
-        }
-
-        .faq-section {
-            margin-bottom: 40px;
-        }
-
-        .faq-section h2 {
-            color: var(--primary-color);
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .faq-item {
-            margin-bottom: 20px;
-            border-bottom: 1px solid var(--card-border);
-            padding-bottom: 20px;
-        }
-
-        .faq-item:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-
-        .faq-question {
-            font-weight: bold;
-            color: var(--primary-color);
-            margin-bottom: 10px;
-            font-size: 1.1rem;
-        }
-
-        .faq-answer {
-            line-height: 1.6;
-        }
-
-        .contact-section {
-            background-color: var(--card-bg);
-            border-radius: 10px;
-            padding: 30px;
-            margin-bottom: 40px;
-            text-align: center;
-            border-top: 4px solid var(--primary-color);
-        }
-
-        .contact-section h2 {
-            color: var(--primary-color);
-            margin-top: 0;
-        }
-
-        .contact-options {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 20px;
-        }
-
-        .contact-option {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .contact-icon {
-            width: 50px;
-            height: 50px;
-            background-color: #E8F0FE;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary-color);
-            font-size: 1.5rem;
-        }
-
-        .contact-label {
-            font-weight: bold;
-            color: var(--primary-color);
-        }
-
-        .contact-value {
-            color: #555;
-        }
-
-        .privacy-notice {
-            background-color: #FFF8E1;
-            border-radius: 10px;
-            padding: 20px;
-            margin-top: 40px;
-            font-size: 0.9rem;
-            color: #555;
-            border-left: 4px solid var(--accent-color);
-        }
-
-        .privacy-notice h3 {
-            color: var(--primary-color);
-            margin-top: 0;
-            font-size: 1.1rem;
-        }
-
-        .privacy-notice p {
-            margin: 10px 0;
-            line-height: 1.5;
-        }
-
-        .main-navbar {
-            background: #E8F0FE;
-            border-bottom: 2px solid #4285F4;
-            padding: 0;
-            margin-bottom: 0;
-            transition: all 0.3s ease;
-        }
-        .dark-mode .main-navbar {
-            background: #303134;
-            border-bottom: 2px solid #8ab4f8;
-        }
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 20px;
-            height: 60px;
-        }
-        .nav-logo {
-            font-weight: bold;
-            color: #4285F4;
-            font-size: 1.3rem;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        .dark-mode .nav-logo {
-            color: #8ab4f8;
-        }
-        .nav-links a {
-            color: #333;
-            text-decoration: none;
-            margin-left: 25px;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-        .dark-mode .nav-links a {
-            color: #e0e0e0;
-        }
-        .nav-links a:hover {
-            color: #4285F4;
-        }
-        .dark-mode .nav-links a:hover {
-            color: #8ab4f8;
-        }
-        @media (max-width: 700px) {
-            .nav-container {
-                flex-direction: column;
-                align-items: flex-start;
-                height: auto;
-                padding: 10px 10px;
-            }
-            .nav-links {
-                display: flex;
-                flex-direction: column;
-                width: 100%;
-            }
-            .nav-links a {
-                margin: 10px 0 0 0;
-            }
-        }
-        body > .container:first-of-type {
-            margin-top: 0 !important;
-        }
-        .toggle-container {
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        .toggle-switch {
-            position: relative;
-            display: inline-block;
-            width: 60px;
-            height: 34px;
-        }
-        .toggle-switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #ccc;
-            transition: .4s;
-            border-radius: 34px;
-        }
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 26px;
-            width: 26px;
-            left: 4px;
-            bottom: 4px;
-            background-color: white;
-            transition: .4s;
-            border-radius: 50%;
-        }
-        input:checked + .slider {
-            background-color: var(--primary-color);
-        }
-        input:checked + .slider:before {
-            transform: translateX(26px);
-        }
-        .toggle-label {
-            margin-right: 10px;
-            line-height: 34px;
-            color: var(--text-color);
-        }
-    </style>
-    <!-- Bootstrap CSS -->
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+    
+    <!-- CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="components.css">
+    <link rel="stylesheet" href="layout.css">
+    <link rel="stylesheet" href="contribute.css">
+    
+    <!-- Preload critical assets -->
+    <link rel="preload" href="styles.css" as="style">
+    <link rel="preload" href="components.css" as="style">
+    <link rel="preload" href="layout.css" as="style">
+    <link rel="preload" href="contribute.css" as="style">
+    <link rel="preload" href="script.js" as="script">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light main-navbar">
@@ -474,23 +40,17 @@
                     <li class="nav-item"><a class="nav-link" href="kindness-gallery.html">Kindness Gallery</a></li>
                     <li class="nav-item"><a class="nav-link" href="acts-of-kindness.html">Acts of Kindness</a></li>
                     <li class="nav-item"><a class="nav-link" href="inspiration-stories.html">Inspiration Stories</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contribute.html">Contribute</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="contribute.html">Contribute</a></li>
                     <li class="nav-item"><a class="nav-link" href="credits-grid.html">Credits & Thanks</a></li>
                 </ul>
             </div>
         </div>
     </nav>
-    <div class="container">
-        <div class="toggle-container">
-            <span class="toggle-label">Dark Mode</span>
-            <label class="toggle-switch">
-                <input type="checkbox" id="darkModeToggle">
-                <span class="slider"></span>
-            </label>
-        </div>
+
+    <div class="container bottom-spacing">
         <header>
-            <h1>Contribute</h1>
-            <p class="subtitle">Join us in continuing Noah's legacy of kindness. There are many ways to contribute to our community project, whether you want to share your own acts of kindness, submit media, or help spread the word.</p>
+            <h1>Contribute to Noah's Kindness Hub</h1>
+            <p class="subtitle">Share your stories, artwork, and acts of kindness with our community</p>
         </header>
 
         <div class="ways-to-contribute">
@@ -519,7 +79,7 @@
             </div>
             
             <div class="contribute-card">
-                <div class="card-header" style="background-color: #34A853;">
+                <div class="card-header card-header-green">
                     <div class="card-icon">🖼️</div>
                     <h2 class="card-title">Submit Media</h2>
                 </div>
@@ -534,17 +94,16 @@
                         <li>Your media will appear instantly on our board</li>
                     </ol>
                     <a href="https://padlet.com/sanchez27gs/kindness-inspiration-board-2ngltiohmz997jct"
-                       class="cta-button"
+                       class="cta-button cta-button-green"
                        target="_blank"
-                       rel="noopener"
-                       style="background-color: #34A853;">
+                       rel="noopener">
                        Submit Media
                     </a>
                 </div>
             </div>
             
             <div class="contribute-card">
-                <div class="card-header" style="background-color: #FBBC05;">
+                <div class="card-header card-header-yellow">
                     <div class="card-icon">🌟</div>
                     <h2 class="card-title">Spread Kindness</h2>
                 </div>
@@ -559,29 +118,28 @@
                         <li>Encourage others to visit our Kindness Hub</li>
                     </ol>
                     <a href="https://padlet.com/sanchez27gs/kindness-inspiration-board-2ngltiohmz997jct"
-                       class="cta-button"
+                       class="cta-button cta-button-yellow"
                        target="_blank"
-                       rel="noopener"
-                       style="background-color: #FBBC05;">
+                       rel="noopener">
                        Get Started
                     </a>
                 </div>
             </div>
         </div>
         
-        <div class="contribute-note" style="margin-top: 30px; background: #E8F0FE; border-radius: 10px; padding: 20px;">
+        <div class="contribute-note">
             <strong>Note:</strong> All stories, photos, and acts of kindness will be shared instantly on our 
             <a href="https://padlet.com/sanchez27gs/kindness-inspiration-board-2ngltiohmz997jct" target="_blank" rel="noopener">
                 Kindness Inspiration Board
             </a>. Please follow the guidelines below to help keep our community safe and positive.
         </div>
         
-        <div class="guidelines-section" style="background-color: #E8F0FE; border-radius: 10px; padding: 30px; margin-bottom: 40px;">
+        <div class="guidelines-section">
             <h2>Submission Guidelines</h2>
-            <div class="guidelines-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
-                <div class="guideline-card" style="background-color: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-                    <div class="guideline-title" style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px; color: #4285F4; font-weight: bold;">
-                        <div class="guideline-icon" style="width: 30px; height: 30px; background-color: #4285F4; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">1</div>
+            <div class="guidelines-grid">
+                <div class="guideline-card">
+                    <div class="guideline-title">
+                        <div class="guideline-icon">1</div>
                         <span>Appropriate Content</span>
                     </div>
                     <div class="guideline-content">
@@ -589,9 +147,9 @@
                     </div>
                 </div>
                 
-                <div class="guideline-card" style="background-color: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-                    <div class="guideline-title" style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px; color: #4285F4; font-weight: bold;">
-                        <div class="guideline-icon" style="width: 30px; height: 30px; background-color: #4285F4; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">2</div>
+                <div class="guideline-card">
+                    <div class="guideline-title">
+                        <div class="guideline-icon">2</div>
                         <span>Privacy Considerations</span>
                     </div>
                     <div class="guideline-content">
@@ -599,9 +157,9 @@
                     </div>
                 </div>
                 
-                <div class="guideline-card" style="background-color: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-                    <div class="guideline-title" style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px; color: #4285F4; font-weight: bold;">
-                        <div class="guideline-icon" style="width: 30px; height: 30px; background-color: #4285F4; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">3</div>
+                <div class="guideline-card">
+                    <div class="guideline-title">
+                        <div class="guideline-icon">3</div>
                         <span>Media Quality</span>
                     </div>
                     <div class="guideline-content">
@@ -609,9 +167,9 @@
                     </div>
                 </div>
                 
-                <div class="guideline-card" style="background-color: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-                    <div class="guideline-title" style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px; color: #4285F4; font-weight: bold;">
-                        <div class="guideline-icon" style="width: 30px; height: 30px; background-color: #4285F4; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">4</div>
+                <div class="guideline-card">
+                    <div class="guideline-title">
+                        <div class="guideline-icon">4</div>
                         <span>Instant Posting</span>
                     </div>
                     <div class="guideline-content">
@@ -660,10 +218,10 @@
             </div>
         </div>
         
-        <div class="contact-section" style="background-color: #f8f9fa; border-radius: 10px; padding: 30px; margin-bottom: 40px; text-align: center; border-top: 4px solid #4285F4;">
+        <div class="contact-section">
             <h2>Need Help? Contact Us</h2>
             <p>If you have questions about contributing or need assistance with your submission, please reach out to us.</p>
-            <div class="contact-options" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin-top: 20px;">
+            <div class="contact-options">
                 <div class="contact-option">
                     <div class="contact-icon">✉️</div>
                     <div class="contact-label">Email</div>
@@ -683,26 +241,16 @@
             </div>
         </div>
         
-        <div class="privacy-notice" style="background-color: #E8F0FE; border-radius: 10px; padding: 20px; margin-top: 40px; font-size: 0.9rem; color: #555; border-left: 4px solid #FBBC05;">
-            <h3 style="color: #4285F4; margin-top: 0; font-size: 1.1rem;">Privacy Notice</h3>
+        <div class="privacy-notice" style="margin-bottom: 60px;">
+            <h3>Privacy Notice</h3>
             <p>Noah's Kindness Hub respects your privacy. We collect minimal personal information (first name, grade level) for submissions. Please do not include full names or personal contact information in your posts.</p>
             <p>All content is visible immediately on our Kindness Inspiration Board. Content is archived annually in June, but remains accessible to school administrators.</p>
             <p>By submitting content, you grant permission for it to be displayed on Noah's Kindness Hub and potentially used in school-related kindness initiatives.</p>
         </div>
     </div>
-    <script>
-    // Dark mode toggle functionality
-    const darkModeToggle = document.getElementById('darkModeToggle');
-    // Check for saved preference
-    const savedDarkMode = localStorage.getItem('darkMode') === 'true';
-    darkModeToggle.checked = savedDarkMode;
-    document.body.classList.toggle('dark-mode', savedDarkMode);
-    darkModeToggle.addEventListener('change', function() {
-        document.body.classList.toggle('dark-mode', this.checked);
-        localStorage.setItem('darkMode', this.checked);
-    });
-    </script>
-    <!-- Bootstrap JS Bundle (with Popper) -->
+
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js" defer></script>
 </body>
 </html>

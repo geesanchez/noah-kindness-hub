@@ -1,0 +1,105 @@
+/* Credits Page Styles */
+
+/* Credits Grid */
+.credits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin: 40px 0;
+}
+
+/* Credit Card */
+.credit-card {
+    background-color: #ffffff;
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.credit-card:hover {
+    transform: translateY(-5px);
+}
+
+.credit-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.credit-card h2 {
+    color: #4285F4;
+    margin: 0 0 15px 0;
+    font-size: 1.5rem;
+}
+
+.credit-card p {
+    color: #333333;
+    margin: 0 0 20px 0;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* Credit List */
+.credit-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+}
+
+.credit-list li {
+    color: #333333;
+    padding: 8px 0;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 1rem;
+}
+
+.credit-list li:last-child {
+    border-bottom: none;
+}
+
+/* Thank You Note */
+.thank-you-note {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 30px;
+    margin: 40px 0;
+    text-align: center;
+    border-left: 4px solid #4285F4;
+}
+
+.thank-you-note p {
+    margin: 0;
+    color: #333333;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .credits-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .credit-card {
+        padding: 20px;
+    }
+
+    .credit-icon {
+        font-size: 2.5rem;
+    }
+
+    .credit-card h2 {
+        font-size: 1.3rem;
+    }
+
+    .thank-you-note {
+        padding: 20px;
+    }
+
+    .thank-you-note p {
+        font-size: 1rem;
+    }
+} 

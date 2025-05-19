@@ -3,421 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore Noah's Kindness Gallery - A collection of artwork, photos, and creative expressions of kindness from our community.">
+    <meta name="keywords" content="kindness, gallery, artwork, photos, community, Noah's Kindness Hub">
+    <meta name="author" content="Noah's Kindness Hub">
+    <meta name="theme-color" content="#4285F4">
+    
     <title>Kindness Gallery - Noah's Kindness Hub</title>
-    <style>
-        :root {
-            --primary-color: #4285F4;
-            --accent-color: #FBBC05;
-            --green-accent: #34A853;
-            --red-accent: #EA4335;
-            --text-color: #333;
-            --bg-color: #fff;
-            --card-bg: #f8f9fa;
-            --card-border: #e0e0e0;
-            --card-shadow: rgba(0,0,0,0.1);
-        }
-
-        .dark-mode {
-            --primary-color: #8ab4f8;
-            --accent-color: #fdd663;
-            --green-accent: #81c995;
-            --red-accent: #f28b82;
-            --text-color: #e0e0e0;
-            --bg-color: #202124;
-            --card-bg: #303134;
-            --card-border: #5f6368;
-            --card-shadow: rgba(0,0,0,0.3);
-        }
-
-        body {
-            font-family: 'Google Sans', Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            transition: all 0.3s ease;
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        h1 {
-            color: var(--primary-color);
-            margin: 0 0 10px 0;
-            font-size: 2.5rem;
-            position: relative;
-            display: inline-block;
-        }
-
-        h1::after {
-            content: "";
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background-color: var(--accent-color);
-            border-radius: 2px;
-        }
-
-        .subtitle {
-            font-size: 1.2rem;
-            color: #666;
-            max-width: 700px;
-            margin: 20px auto;
-            line-height: 1.6;
-        }
-
-        .gallery-tabs {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .tab {
-            padding: 10px 20px;
-            background-color: var(--card-bg);
-            border-radius: 30px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-        }
-
-        .tab.active {
-            background-color: var(--primary-color);
-            color: white;
-        }
-
-        .tab:hover:not(.active) {
-            border-color: var(--primary-color);
-        }
-
-        .slides-container {
-            background-color: var(--card-bg);
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 4px 8px var(--card-shadow);
-            margin-bottom: 40px;
-        }
-
-        .slides-container h2 {
-            color: var(--primary-color);
-            margin-top: 0;
-        }
-
-        .embed-container {
-            position: relative;
-            padding-bottom: 56.25%; /* 16:9 aspect ratio */
-            height: 0;
-            overflow: hidden;
-            max-width: 100%;
-            background-color: #eee;
-            border-radius: 8px;
-            margin: 20px 0;
-        }
-
-        .embed-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        .embed-placeholder {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            background-color: #eee;
-            color: #666;
-        }
-
-        .embed-placeholder p {
-            font-style: italic;
-            margin: 10px 0;
-        }
-
-        .gallery-sections {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 30px;
-        }
-
-        @media (min-width: 768px) {
-            .gallery-sections {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        .gallery-section {
-            background-color: var(--card-bg);
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 4px 8px var(--card-shadow);
-        }
-
-        .gallery-section h2 {
-            color: var(--primary-color);
-            margin-top: 0;
-        }
-
-        .gallery-section.artwork {
-            border-top: 4px solid var(--green-accent);
-        }
-
-        .gallery-section.testimonials {
-            border-top: 4px solid var(--red-accent);
-        }
-
-        .artwork-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .artwork-item {
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 3px 6px var(--card-shadow);
-            aspect-ratio: 1;
-            position: relative;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .artwork-item:hover {
-            transform: scale(1.05);
-        }
-
-        .artwork-placeholder {
-            width: 100%;
-            height: 100%;
-            background-color: #ddd;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #666;
-            font-size: 0.8rem;
-            text-align: center;
-            padding: 5px;
-        }
-
-        .testimonial {
-            margin-bottom: 20px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid var(--card-border);
-        }
-
-        .testimonial:last-child {
-            margin-bottom: 0;
-            padding-bottom: 0;
-            border-bottom: none;
-        }
-
-        .testimonial-text {
-            font-style: italic;
-            line-height: 1.6;
-            margin-bottom: 10px;
-            position: relative;
-            padding-left: 20px;
-        }
-
-        .testimonial-text::before {
-            content: """;
-            font-size: 2rem;
-            color: var(--accent-color);
-            position: absolute;
-            left: 0;
-            top: -10px;
-        }
-
-        .testimonial-author {
-            font-weight: bold;
-            color: var(--primary-color);
-        }
-
-        .testimonial-context {
-            font-size: 0.9rem;
-            color: #666;
-        }
-
-        .submission-info {
-            background-color: #E8F0FE;
-            border-radius: 10px;
-            padding: 20px;
-            margin-top: 40px;
-            border-left: 4px solid var(--primary-color);
-        }
-
-        .submission-info h2 {
-            color: var(--primary-color);
-            margin-top: 0;
-        }
-
-        .submission-info ul {
-            padding-left: 20px;
-            margin: 15px 0;
-        }
-
-        .submission-info li {
-            margin-bottom: 10px;
-            line-height: 1.5;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background-color: var(--primary-color);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: bold;
-            margin-top: 15px;
-            transition: background-color 0.3s ease;
-        }
-
-        .cta-button:hover {
-            background-color: #3367D6; /* Darker blue */
-        }
-
-        .main-navbar {
-            background: #E8F0FE;
-            border-bottom: 2px solid #4285F4;
-            padding: 0;
-            margin-bottom: 0;
-            transition: all 0.3s ease;
-        }
-        .dark-mode .main-navbar {
-            background: #303134;
-            border-bottom: 2px solid #8ab4f8;
-        }
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 20px;
-            height: 60px;
-        }
-        .nav-logo {
-            font-weight: bold;
-            color: #4285F4;
-            font-size: 1.3rem;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        .dark-mode .nav-logo {
-            color: #8ab4f8;
-        }
-        .nav-links a {
-            color: #333;
-            text-decoration: none;
-            margin-left: 25px;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-        .dark-mode .nav-links a {
-            color: #e0e0e0;
-        }
-        .nav-links a:hover {
-            color: #4285F4;
-        }
-        .dark-mode .nav-links a:hover {
-            color: #8ab4f8;
-        }
-        @media (max-width: 700px) {
-            .nav-container {
-                flex-direction: column;
-                align-items: flex-start;
-                height: auto;
-                padding: 10px 10px;
-            }
-            .nav-links {
-                display: flex;
-                flex-direction: column;
-                width: 100%;
-            }
-            .nav-links a {
-                margin: 10px 0 0 0;
-            }
-        }
-        body > .container:first-of-type {
-            margin-top: 0 !important;
-        }
-        .toggle-container {
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        .toggle-switch {
-            position: relative;
-            display: inline-block;
-            width: 60px;
-            height: 34px;
-        }
-        .toggle-switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #ccc;
-            transition: .4s;
-            border-radius: 34px;
-        }
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 26px;
-            width: 26px;
-            left: 4px;
-            bottom: 4px;
-            background-color: white;
-            transition: .4s;
-            border-radius: 50%;
-        }
-        input:checked + .slider {
-            background-color: var(--primary-color);
-        }
-        input:checked + .slider:before {
-            transform: translateX(26px);
-        }
-        .toggle-label {
-            margin-right: 10px;
-            line-height: 34px;
-            color: var(--text-color);
-        }
-    </style>
-    <!-- Bootstrap CSS -->
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+    
+    <!-- CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="components.css">
+    <link rel="stylesheet" href="layout.css">
+    <link rel="stylesheet" href="gallery.css">
+    
+    <!-- Preload critical assets -->
+    <link rel="preload" href="styles.css" as="style">
+    <link rel="preload" href="components.css" as="style">
+    <link rel="preload" href="layout.css" as="style">
+    <link rel="preload" href="gallery.css" as="style">
+    <link rel="preload" href="script.js" as="script">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light main-navbar">
@@ -429,7 +37,7 @@
             <div class="collapse navbar-collapse" id="mainNavbar">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0 nav-links">
                     <li class="nav-item"><a class="nav-link" href="about-noah.html">About Noah</a></li>
-                    <li class="nav-item"><a class="nav-link" href="kindness-gallery.html">Kindness Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="kindness-gallery.html">Kindness Gallery</a></li>
                     <li class="nav-item"><a class="nav-link" href="acts-of-kindness.html">Acts of Kindness</a></li>
                     <li class="nav-item"><a class="nav-link" href="inspiration-stories.html">Inspiration Stories</a></li>
                     <li class="nav-item"><a class="nav-link" href="contribute.html">Contribute</a></li>
@@ -438,123 +46,177 @@
             </div>
         </div>
     </nav>
-    <div class="container">
-        <div class="toggle-container">
-            <span class="toggle-label">Dark Mode</span>
-            <label class="toggle-switch">
-                <input type="checkbox" id="darkModeToggle">
-                <span class="slider"></span>
-            </label>
-        </div>
+
+    <div class="container bottom-spacing">
         <header>
             <h1>Kindness Gallery</h1>
-            <p class="subtitle">Explore artwork, photos, and testimonials that celebrate Noah's kindness and inspire our community to continue his legacy of compassion.</p>
+            <p class="subtitle">A collection of artwork and photos from our community celebrating Noah's legacy of kindness.</p>
         </header>
 
-        <div class="gallery-tabs">
-            <div class="tab active">All</div>
-            <div class="tab">Photos</div>
-            <div class="tab">Artwork</div>
-            <div class="tab">Kindness Moments</div>
-            <div class="tab">Testimonials</div>
+        <div class="gallery-filters">
+            <button class="filter-button active" data-filter="student-art" onclick="scrollToSection('student-art-section')">Student Artwork</button>
+            <button class="filter-button" data-filter="photos" onclick="scrollToSection('photos-section')">Photos</button>
         </div>
 
-        <div class="slides-container">
-            <h2>Kindness Gallery Slideshow</h2>
-            <p>Browse through our collection of kindness-inspired photos, artwork, and moments. Use the arrows to navigate or click the presentation to view in fullscreen.</p>
-            
-            <div class="embed-container">
-                <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTFecIuL55gfhQ1x2TKLA6lD1t6-OMLv_cwNlPbmSM_KnKXtmAfn6IBhzqHeTeMSVP62xuAJnscxZWF/pubembed?start=false&loop=false&delayms=3000"
-                    frameborder="0"
-                    width="960"
-                    height="569"
-                    allowfullscreen="true"
-                    mozallowfullscreen="true"
-                    webkitallowfullscreen="true"></iframe>
+        <!-- Student Artwork Carousel -->
+        <div id="student-art-section" class="carousel-section">
+            <h2>Student Artwork</h2>
+            <div id="artworkCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#artworkCarousel" data-bs-slide-to="0" class="active"></button>
+                    <button type="button" data-bs-target="#artworkCarousel" data-bs-slide-to="1"></button>
+                    <button type="button" data-bs-target="#artworkCarousel" data-bs-slide-to="2"></button>
+                </div>
+
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="gallery-slide">
+                            <div class="gallery-image">
+                                <img src="images/gallery/student-art1.jpg" alt="Kindness Tree">
+                            </div>
+                            <div class="gallery-content">
+                                <h3>Kindness Tree</h3>
+                                <p class="gallery-author">By Sarah M., Grade 4</p>
+                                <p class="gallery-description">A collaborative art project where each leaf represents an act of kindness.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item">
+                        <div class="gallery-slide">
+                            <div class="gallery-image">
+                                <img src="images/gallery/student-art2.jpg" alt="Friendship Circle">
+                            </div>
+                            <div class="gallery-content">
+                                <h3>Friendship Circle</h3>
+                                <p class="gallery-author">By Emma L., Grade 3</p>
+                                <p class="gallery-description">A colorful painting showing friends holding hands in a circle of kindness.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item">
+                        <div class="gallery-slide">
+                            <div class="gallery-image">
+                                <img src="images/gallery/student-art3.jpg" alt="Kindness Rainbow">
+                            </div>
+                            <div class="gallery-content">
+                                <h3>Kindness Rainbow</h3>
+                                <p class="gallery-author">By James T., Grade 5</p>
+                                <p class="gallery-description">A vibrant rainbow with each color representing a different act of kindness.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="carousel-control-prev" type="button" data-bs-target="#artworkCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#artworkCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
             </div>
         </div>
 
-        <div class="gallery-sections">
-            <div class="gallery-section artwork">
-                <h2>Featured Artwork</h2>
-                <p>Creative expressions of kindness inspired by Noah's legacy, created by students from all grade levels.</p>
-                
-                <div class="artwork-grid">
-                    <!-- These are placeholders - replace with actual artwork thumbnails -->
-                    <div class="artwork-item">
-                        <div class="artwork-placeholder">Kindness Tree</div>
+        <!-- Photos Carousel -->
+        <div id="photos-section" class="carousel-section">
+            <h2>Community Photos</h2>
+            <div id="photosCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#photosCarousel" data-bs-slide-to="0" class="active"></button>
+                    <button type="button" data-bs-target="#photosCarousel" data-bs-slide-to="1"></button>
+                    <button type="button" data-bs-target="#photosCarousel" data-bs-slide-to="2"></button>
+                </div>
+
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="gallery-slide">
+                            <div class="gallery-image">
+                                <img src="images/gallery/photo1.jpg" alt="Community Garden">
+                            </div>
+                            <div class="gallery-content">
+                                <h3>Community Garden</h3>
+                                <p class="gallery-author">By Michael R.</p>
+                                <p class="gallery-description">Students working together to create a beautiful garden space.</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="artwork-item">
-                        <div class="artwork-placeholder">Helping Hands</div>
+
+                    <div class="carousel-item">
+                        <div class="gallery-slide">
+                            <div class="gallery-image">
+                                <img src="images/gallery/photo2.jpg" alt="Kindness Cards">
+                            </div>
+                            <div class="gallery-content">
+                                <h3>Kindness Cards</h3>
+                                <p class="gallery-author">By Grade 2 Class</p>
+                                <p class="gallery-description">Students making cards to spread kindness throughout the school.</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="artwork-item">
-                        <div class="artwork-placeholder">Friendship Bracelet</div>
-                    </div>
-                    <div class="artwork-item">
-                        <div class="artwork-placeholder">Kindness Rocks</div>
-                    </div>
-                    <div class="artwork-item">
-                        <div class="artwork-placeholder">Heart Collage</div>
-                    </div>
-                    <div class="artwork-item">
-                        <div class="artwork-placeholder">Kindness Poster</div>
+
+                    <div class="carousel-item">
+                        <div class="gallery-slide">
+                            <div class="gallery-image">
+                                <img src="images/gallery/photo3.jpg" alt="Reading Buddies">
+                            </div>
+                            <div class="gallery-content">
+                                <h3>Reading Buddies</h3>
+                                <p class="gallery-author">By Library Club</p>
+                                <p class="gallery-description">Older students reading with younger students to promote literacy and friendship.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            
-            <div class="gallery-section testimonials">
-                <h2>Student Testimonials</h2>
-                <p>Reflections on how Noah's kindness has inspired others to spread compassion.</p>
-                
-                <div class="testimonial">
-                    <div class="testimonial-text">Noah taught me that even small acts of kindness can make someone's whole day better. Now I try to do at least one kind thing every day.</div>
-                    <div class="testimonial-author">Sophia L.</div>
-                    <div class="testimonial-context">7th Grade Student</div>
-                </div>
-                
-                <div class="testimonial">
-                    <div class="testimonial-text">I never met Noah, but his story inspired me to start a kindness club at our school. His legacy lives on through all the people he's inspired.</div>
-                    <div class="testimonial-author">Ethan M.</div>
-                    <div class="testimonial-context">6th Grade Student</div>
-                </div>
-                
-                <div class="testimonial">
-                    <div class="testimonial-text">The kindness project has changed our school culture. Students are more aware of how their actions affect others, and there's a real effort to include everyone.</div>
-                    <div class="testimonial-author">Ms. Rivera</div>
-                    <div class="testimonial-context">School Counselor</div>
-                </div>
+
+                <button class="carousel-control-prev" type="button" data-bs-target="#photosCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#photosCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
             </div>
         </div>
-        
-        <div class="submission-info">
-            <h2>Submit Your Work</h2>
-            <p>We welcome submissions to our Kindness Gallery from students, teachers, and community members.</p>
-            
-            <ul>
-                <li><strong>Photos:</strong> Share images of kindness in action or moments that remind you of Noah's spirit</li>
-                <li><strong>Artwork:</strong> Submit drawings, paintings, digital art, or other creative expressions of kindness</li>
-                <li><strong>Kindness Moments:</strong> Document acts of kindness you've witnessed or performed</li>
-                <li><strong>Testimonials:</strong> Share how Noah or this project has inspired you</li>
-            </ul>
-            
-            <p>All submissions will be reviewed before being added to the gallery. Please include your first name and grade level with your submission.</p>
-            
-            <a href="#" class="cta-button">Submit to Gallery</a>
+
+        <div class="gallery-note">
+            <p>Want to share your artwork or photos? <a href="https://padlet.com/sanchez27gs/kindness-inspiration-board-2ngltiohmz997jct" target="_blank" rel="noopener">Submit your work</a> to our gallery! All student artwork and photos are welcome.</p>
+        </div>
+
+        <div class="gallery-guidelines" style="margin-bottom: 60px;">
+            <h2>Gallery Guidelines</h2>
+            <div class="guidelines-grid">
+                <div class="guideline-card">
+                    <div class="guideline-icon">🎨</div>
+                    <h3>Student Artwork</h3>
+                    <p>Original drawings, paintings, or digital art that represents kindness and community. All students are encouraged to submit their artwork!</p>
+                </div>
+                <div class="guideline-card">
+                    <div class="guideline-icon">📸</div>
+                    <h3>Photos</h3>
+                    <p>High-quality images capturing acts of kindness, community events, or student activities. Please ensure you have permission to share photos of others.</p>
+                </div>
+            </div>
         </div>
     </div>
-    <script>
-    // Dark mode toggle functionality
-    const darkModeToggle = document.getElementById('darkModeToggle');
-    // Check for saved preference
-    const savedDarkMode = localStorage.getItem('darkMode') === 'true';
-    darkModeToggle.checked = savedDarkMode;
-    document.body.classList.toggle('dark-mode', savedDarkMode);
-    darkModeToggle.addEventListener('change', function() {
-        document.body.classList.toggle('dark-mode', this.checked);
-        localStorage.setItem('darkMode', this.checked);
-    });
-    </script>
-    <!-- Bootstrap JS Bundle (with Popper) -->
+
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js" defer></script>
+    <script>
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            section.scrollIntoView({ behavior: 'smooth' });
+            
+            // Update active button
+            document.querySelectorAll('.filter-button').forEach(button => {
+                button.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+    </script>
 </body>
 </html>

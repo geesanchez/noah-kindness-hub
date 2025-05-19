@@ -1,0 +1,453 @@
+/* Gallery Page Styles */
+
+/* Gallery Filters */
+.gallery-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 30px;
+    justify-content: center;
+}
+
+.filter-button {
+    padding: 8px 16px;
+    border: 2px solid var(--primary-color);
+    border-radius: 20px;
+    background: none;
+    color: var(--primary-color);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-button:hover,
+.filter-button.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Carousel Section */
+.carousel-section {
+    margin: 40px 0;
+}
+
+.carousel-section h2 {
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+}
+
+/* Carousel Styles */
+.carousel {
+    background-color: var(--card-bg);
+    border-radius: 15px;
+    box-shadow: 0 4px 8px var(--card-shadow);
+    overflow: hidden;
+}
+
+.carousel-inner {
+    border-radius: 15px;
+}
+
+.carousel-item {
+    height: 600px;
+}
+
+.gallery-slide {
+    background-color: #ffffff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-image {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+}
+
+.gallery-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.gallery-content {
+    background-color: #ffffff;
+    padding: 20px;
+}
+
+.gallery-content h3 {
+    color: var(--primary-color);
+    margin: 0 0 15px 0;
+    font-size: 1.5rem;
+}
+
+.gallery-author {
+    color: var(--text-muted);
+    font-size: 1rem;
+    margin: 0 0 15px 0;
+}
+
+.gallery-description {
+    color: var(--text-color);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 0;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Carousel Controls */
+.carousel-control-prev,
+.carousel-control-next {
+    width: 50px;
+    height: 50px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0 20px;
+    opacity: 0.8;
+}
+
+.carousel-control-prev {
+    left: 20px;
+}
+
+.carousel-control-next {
+    right: 20px;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    opacity: 1;
+}
+
+.carousel-indicators {
+    margin-bottom: 20px;
+}
+
+.carousel-indicators button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    opacity: 0.5;
+    margin: 0 5px;
+}
+
+.carousel-indicators button.active {
+    opacity: 1;
+}
+
+/* Gallery Note */
+.gallery-note {
+    background-color: #f8f9fa;
+    border-left: 4px solid #4285F4;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 40px 0;
+    text-align: center;
+}
+
+.gallery-note p {
+    margin: 0;
+    color: var(--text-color);
+}
+
+.gallery-note a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.gallery-note a:hover {
+    text-decoration: underline;
+}
+
+/* Gallery Guidelines */
+.gallery-guidelines {
+    margin-top: 40px;
+}
+
+.gallery-guidelines h2 {
+    color: var(--primary-color);
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.guidelines-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.guideline-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.guideline-card:hover {
+    transform: translateY(-5px);
+}
+
+.guideline-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.guideline-card h3 {
+    color: var(--primary-color);
+    margin: 0 0 15px 0;
+    font-size: 1.2rem;
+}
+
+.guideline-card p {
+    color: var(--text-color);
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* Gallery Grid */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+/* Gallery Card */
+.gallery-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.gallery-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.gallery-card-content {
+    background-color: #ffffff;
+    padding: 20px;
+}
+
+.gallery-card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+.gallery-card-description {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+}
+
+.gallery-card-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+/* Gallery Categories */
+.gallery-categories {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.gallery-category {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    background: var(--card-bg);
+    color: var(--text-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.gallery-category:hover,
+.gallery-category.active {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* Gallery Form */
+.gallery-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.gallery-form .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.gallery-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.gallery-form input,
+.gallery-form textarea,
+.gallery-form select {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #ffffff;
+    color: #333333;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+}
+
+.gallery-form input:focus,
+.gallery-form textarea:focus,
+.gallery-form select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(66, 133, 244, 0.2);
+}
+
+/* Gallery Badges */
+.gallery-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.gallery-badge.artwork {
+    background: var(--green-accent);
+    color: white;
+}
+
+.gallery-badge.photo {
+    background: var(--primary-color);
+    color: white;
+}
+
+.gallery-badge.memorial {
+    background: var(--accent-color);
+    color: var(--text-color);
+}
+
+/* Gallery Loading States */
+.gallery-loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+}
+
+.gallery-loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--border-color);
+    border-top-color: var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Gallery Responsive */
+@media (max-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1rem;
+    }
+
+    .gallery-card img {
+        height: 200px;
+    }
+
+    .gallery-categories {
+        justify-content: center;
+    }
+}
+
+/* Gallery Animations */
+.gallery-card {
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Gallery Form Image Preview */
+.image-preview {
+    margin-top: 1rem;
+    max-width: 100%;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.image-preview img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Gallery Form Loading State */
+.gallery-form .spinner {
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s linear infinite;
+    margin-right: 0.5rem;
+    vertical-align: middle;
+}
+
+/* Gallery Form Success Message */
+.gallery-form .alert {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 4px;
+    background-color: var(--green-accent);
+    color: white;
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Gallery Form Error Message */
+.gallery-form .alert-error {
+    background-color: var(--red-accent);
+} 

@@ -3,455 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Acts of Kindness Feed - Noah's Kindness Hub</title>
-    <style>
-        :root {
-            --primary-color: #4285F4;
-            --accent-color: #FBBC05;
-            --green-accent: #34A853;
-            --red-accent: #EA4335;
-            --text-color: #333;
-            --bg-color: #fff;
-            --card-bg: #f8f9fa;
-            --card-border: #e0e0e0;
-            --card-shadow: rgba(0,0,0,0.1);
-        }
-
-        .dark-mode {
-            --primary-color: #8ab4f8;
-            --accent-color: #fdd663;
-            --green-accent: #81c995;
-            --red-accent: #f28b82;
-            --text-color: #e0e0e0;
-            --bg-color: #202124;
-            --card-bg: #303134;
-            --card-border: #5f6368;
-            --card-shadow: rgba(0,0,0,0.3);
-        }
-
-        body {
-            font-family: 'Google Sans', Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            transition: all 0.3s ease;
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        h1 {
-            color: var(--primary-color);
-            margin: 0 0 10px 0;
-            font-size: 2.5rem;
-            position: relative;
-            display: inline-block;
-        }
-
-        h1::after {
-            content: "";
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background-color: var(--accent-color);
-            border-radius: 2px;
-        }
-
-        .subtitle {
-            font-size: 1.2rem;
-            color: #666;
-            max-width: 700px;
-            margin: 20px auto;
-            line-height: 1.6;
-        }
-
-        .feed-layout {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-        }
-
-        @media (min-width: 768px) {
-            .feed-layout {
-                flex-direction: row;
-            }
-        }
-
-        .main-feed {
-            flex: 2;
-        }
-
-        .sidebar {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .padlet-container {
-            background-color: var(--card-bg);
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 4px 8px var(--card-shadow);
-        }
-
-        .padlet-container h2 {
-            color: var(--primary-color);
-            margin-top: 0;
-        }
-
-        .embed-container {
-            position: relative;
-            padding-bottom: 150%; /* Taller aspect ratio for Padlet */
-            height: 0;
-            overflow: hidden;
-            max-width: 100%;
-            background-color: #eee;
-            border-radius: 8px;
-            margin: 20px 0;
-        }
-
-        .embed-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        .embed-placeholder {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            background-color: #eee;
-            color: #666;
-        }
-
-        .embed-placeholder p {
-            font-style: italic;
-            margin: 10px 0;
-        }
-
-        .info-card {
-            background-color: var(--card-bg);
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 4px 8px var(--card-shadow);
-        }
-
-        .info-card h2 {
-            color: var(--primary-color);
-            margin-top: 0;
-            font-size: 1.3rem;
-        }
-
-        .info-card ul {
-            padding-left: 20px;
-            margin: 15px 0;
-        }
-
-        .info-card li {
-            margin-bottom: 10px;
-            line-height: 1.5;
-        }
-
-        .info-card.guidelines {
-            border-left: 4px solid var(--green-accent);
-        }
-
-        .info-card.categories {
-            border-left: 4px solid var(--accent-color);
-        }
-
-        .category-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        .category-tag {
-            background-color: #E8F0FE;
-            color: var(--primary-color);
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            display: inline-block;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .category-tag:hover {
-            background-color: var(--primary-color);
-            color: white;
-        }
-
-        .featured-acts {
-            background-color: #FFF8E1;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 4px 8px var(--card-shadow);
-            border-left: 4px solid var(--accent-color);
-            margin-top: 30px;
-        }
-
-        .featured-acts h2 {
-            color: var(--primary-color);
-            margin-top: 0;
-        }
-
-        .act-item {
-            padding: 15px 0;
-            border-bottom: 1px solid var(--card-border);
-        }
-
-        .act-item:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
-        }
-
-        .act-title {
-            font-weight: bold;
-            margin-bottom: 5px;
-            color: var(--primary-color);
-        }
-
-        .act-description {
-            margin-bottom: 10px;
-            line-height: 1.5;
-        }
-
-        .act-meta {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.9rem;
-            color: #666;
-        }
-
-        .share-options {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .share-button {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            background: none;
-            border: none;
-            color: var(--primary-color);
-            cursor: pointer;
-            font-size: 0.9rem;
-            padding: 5px 10px;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-
-        .share-button:hover {
-            background-color: #E8F0FE;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background-color: var(--primary-color);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: bold;
-            margin-top: 15px;
-            transition: background-color 0.3s ease;
-        }
-
-        .cta-button:hover {
-            background-color: #3367D6; /* Darker blue */
-        }
-
-        .maintenance-note {
-            background-color: #E8F0FE;
-            border-radius: 10px;
-            padding: 15px;
-            margin-top: 40px;
-            font-size: 0.9rem;
-            color: #555;
-            border-left: 4px solid var(--primary-color);
-        }
-
-        .maintenance-note p {
-            margin: 0;
-            line-height: 1.5;
-        }
-
-        .kindness-fact {
-            background-color: #FFF8E1;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 4px 8px var(--card-shadow);
-            border-left: 4px solid var(--accent-color);
-            margin-top: 30px;
-        }
-
-        .kindness-fact strong {
-            font-weight: bold;
-            color: var(--primary-color);
-        }
-
-        .spotlight {
-            background-color: #FFF8E1;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 4px 8px var(--card-shadow);
-            margin-top: 30px;
-        }
-
-        .spotlight h2 {
-            color: var(--primary-color);
-            margin-top: 0;
-        }
-
-        .spotlight p {
-            margin: 10px 0;
-            line-height: 1.5;
-        }
-
-        .main-navbar {
-            background: #E8F0FE;
-            border-bottom: 2px solid #4285F4;
-            padding: 0;
-            margin-bottom: 0;
-            transition: all 0.3s ease;
-        }
-        .dark-mode .main-navbar {
-            background: #303134;
-            border-bottom: 2px solid #8ab4f8;
-        }
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 20px;
-            height: 60px;
-        }
-        .nav-logo {
-            font-weight: bold;
-            color: #4285F4;
-            font-size: 1.3rem;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        .dark-mode .nav-logo {
-            color: #8ab4f8;
-        }
-        .nav-links a {
-            color: #333;
-            text-decoration: none;
-            margin-left: 25px;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-        .dark-mode .nav-links a {
-            color: #e0e0e0;
-        }
-        .nav-links a:hover {
-            color: #4285F4;
-        }
-        .dark-mode .nav-links a:hover {
-            color: #8ab4f8;
-        }
-        @media (max-width: 700px) {
-            .nav-container {
-                flex-direction: column;
-                align-items: flex-start;
-                height: auto;
-                padding: 10px 10px;
-            }
-            .nav-links {
-                display: flex;
-                flex-direction: column;
-                width: 100%;
-            }
-            .nav-links a {
-                margin: 10px 0 0 0;
-            }
-        }
-        body > .container:first-of-type {
-            margin-top: 0 !important;
-        }
-        .toggle-container {
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        .toggle-switch {
-            position: relative;
-            display: inline-block;
-            width: 60px;
-            height: 34px;
-        }
-        .toggle-switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #ccc;
-            transition: .4s;
-            border-radius: 34px;
-        }
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 26px;
-            width: 26px;
-            left: 4px;
-            bottom: 4px;
-            background-color: white;
-            transition: .4s;
-            border-radius: 50%;
-        }
-        input:checked + .slider {
-            background-color: var(--primary-color);
-        }
-        input:checked + .slider:before {
-            transform: translateX(26px);
-        }
-        .toggle-label {
-            margin-right: 10px;
-            line-height: 34px;
-            color: var(--text-color);
-        }
-    </style>
-    <!-- Bootstrap CSS -->
+    <meta name="description" content="Discover and share acts of kindness - Join our community in spreading compassion and making a positive impact.">
+    <meta name="keywords" content="acts of kindness, community service, compassion, kindness, Noah's Kindness Hub">
+    <meta name="author" content="Noah's Kindness Hub">
+    <meta name="theme-color" content="#4285F4">
+    
+    <title>Acts of Kindness - Noah's Kindness Hub</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+    
+    <!-- CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="components.css">
+    <link rel="stylesheet" href="layout.css">
+    <link rel="stylesheet" href="acts.css">
+    
+    <!-- Preload critical assets -->
+    <link rel="preload" href="styles.css" as="style">
+    <link rel="preload" href="components.css" as="style">
+    <link rel="preload" href="layout.css" as="style">
+    <link rel="preload" href="acts.css" as="style">
+    <link rel="preload" href="script.js" as="script">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light main-navbar">
@@ -464,7 +38,7 @@
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0 nav-links">
                     <li class="nav-item"><a class="nav-link" href="about-noah.html">About Noah</a></li>
                     <li class="nav-item"><a class="nav-link" href="kindness-gallery.html">Kindness Gallery</a></li>
-                    <li class="nav-item"><a class="nav-link" href="acts-of-kindness.html">Acts of Kindness</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="acts-of-kindness.html">Acts of Kindness</a></li>
                     <li class="nav-item"><a class="nav-link" href="inspiration-stories.html">Inspiration Stories</a></li>
                     <li class="nav-item"><a class="nav-link" href="contribute.html">Contribute</a></li>
                     <li class="nav-item"><a class="nav-link" href="credits-grid.html">Credits & Thanks</a></li>
@@ -472,110 +46,96 @@
             </div>
         </div>
     </nav>
+
     <div class="container">
-        <div class="toggle-container">
-            <span class="toggle-label">Dark Mode</span>
-            <label class="toggle-switch">
-                <input type="checkbox" id="darkModeToggle">
-                <span class="slider"></span>
-            </label>
-        </div>
         <header>
-            <h1>Acts of Kindness Feed</h1>
-            <p class="subtitle">Share and discover acts of kindness inspired by Noah's legacy. Every small act of compassion creates ripples that can change our community for the better.</p>
+            <h1>Acts of Kindness</h1>
+            <p class="subtitle">Discover ways to spread kindness and make a positive impact in your community</p>
         </header>
 
-        <div class="feed-layout">
-            <div class="main-feed">
-                <div class="padlet-container">
-                    <h2>Kindness Inspiration Board</h2>
-                    <p>Share your acts of kindness, stories, artwork, or shout-outs! Click the + button to add your post.</p>
-                    <iframe src="https://padlet.com/sanchez27gs/kindness-inspiration-board-2ngltiohmz997jct" style="width:100%;height:600px;border:none;"></iframe>
-                </div>
-                
-                <div class="spotlight" style="background: #FFF8E1; border-left: 4px solid #FBBC05; border-radius: 10px; padding: 20px; margin: 30px 0;">
-                    <h2 style="color: #4285F4; margin-top: 0;">Kindness Spotlight</h2>
-                    <p>
-                        <strong>Beautify Our Campus!</strong><br>
-                        Last week, our students took the initiative to pick up trash around the school as part of a campus beautification effort. Their teamwork and care for our environment made a big difference—thank you to everyone who helped keep our school clean and welcoming!
-                    </p>
-                    <ul style="margin: 15px 0 0 20px; color: #333;">
-                        <li>Picked up litter during recess and after school</li>
-                        <li>Encouraged classmates to recycle</li>
-                    </ul>
-                    <p style="margin-top: 15px; color: #34A853;"><em>Let's keep the kindness going—what will you do this week?</em></p>
-                </div>
-                
-                <div class="kindness-fact">
-                    <strong>Did you know?</strong> 
-                    Kindness is proven to boost happiness for both the giver and the receiver!
-                </div>
+        <div class="acts-grid">
+            <div class="act-card">
+                <div class="act-icon">🎨</div>
+                <h2>Create Kindness Art</h2>
+                <p>Make artwork that spreads joy and positivity. Share your creations with others or display them in your community.</p>
+                <a href="contribute.html" class="act-link">Share Your Art</a>
+            </div>
 
-                <div class="maintenance-note">
-                    <p><strong>Note:</strong> This Padlet feed is archived each June and refreshed for the new school year. </p>
+            <div class="act-card">
+                <div class="act-icon">📝</div>
+                <h2>Write Kind Notes</h2>
+                <p>Leave encouraging notes for classmates, teachers, or family members. Small words of kindness can make a big difference.</p>
+                <a href="contribute.html" class="act-link">Share Your Notes</a>
+            </div>
+
+            <div class="act-card">
+                <div class="act-icon">🤝</div>
+                <h2>Help Others</h2>
+                <p>Offer assistance to someone in need. Whether it's helping with homework or carrying groceries, every act counts.</p>
+                <a href="contribute.html" class="act-link">Share Your Story</a>
+            </div>
+
+            <div class="act-card">
+                <div class="act-icon">🌱</div>
+                <h2>Community Garden</h2>
+                <p>Participate in our community garden project. Help grow plants and share the harvest with others.</p>
+                <a href="contribute.html" class="act-link">Get Involved</a>
+            </div>
+
+            <div class="act-card">
+                <div class="act-icon">🎁</div>
+                <h2>Gift Giving</h2>
+                <p>Create small gifts or care packages for those who might need a little extra kindness in their day.</p>
+                <a href="contribute.html" class="act-link">Share Your Gifts</a>
+            </div>
+
+            <div class="act-card">
+                <div class="act-icon">🎵</div>
+                <h2>Music & Joy</h2>
+                <p>Share the gift of music by performing for others or creating playlists that bring happiness.</p>
+                <a href="contribute.html" class="act-link">Share Your Music</a>
+            </div>
+        </div>
+
+        <div class="kindness-challenge">
+            <h2>Monthly Kindness Challenge</h2>
+            <div class="challenge-card">
+                <div class="challenge-header">
+                    <div class="challenge-icon">🌟</div>
+                    <h3>April Challenge: Kindness in Action</h3>
+                </div>
+                <div class="challenge-content">
+                    <p>This month, we challenge you to perform at least one act of kindness each day. Document your journey and inspire others!</p>
+                    <ul class="challenge-tasks">
+                        <li>Day 1: Write a thank you note</li>
+                        <li>Day 2: Help someone with their work</li>
+                        <li>Day 3: Share a smile with everyone you meet</li>
+                        <li>Day 4: Clean up a shared space</li>
+                        <li>Day 5: Give someone a compliment</li>
+                    </ul>
+                    <a href="contribute.html" class="challenge-button">Join the Challenge</a>
                 </div>
             </div>
-            
-            <div class="sidebar">
-                <div class="info-card guidelines">
-                    <h2>Sharing Guidelines</h2>
-                    <ul>
-                        <li><strong>Be specific:</strong> Describe the act of kindness in detail</li>
-                        <li><strong>Be respectful:</strong> Use appropriate language and content</li>
-                        <li><strong>Protect privacy:</strong> Use first names only</li>
-                        <li><strong>Add media:</strong> Include photos when appropriate (and with permission)</li>
-                        <li><strong>Add location:</strong> Note where the act took place (classroom, playground, etc.)</li>
-                    </ul>
-                    
-                    <a href="https://padlet.com/sanchez27gs/kindness-inspiration-board-2ngltiohmz997jct" 
-                       class="cta-button" 
-                       target="_blank" 
-                       rel="noopener">
-                       Share Your Act of Kindness
-                    </a>
-                </div>
-                
-                <div class="info-card categories">
-                    <h2>Kindness Categories</h2>
-                    <ul>
-                        <li><strong>School:</strong> Kindness at school or with classmates</li>
-                        <li><strong>Community:</strong> Kindness in your neighborhood or town</li>
-                        <li><strong>Family:</strong> Kindness at home or with family</li>
-                    </ul>
-                    <p>When you post, please start your message with [School], [Community], or [Family]—or use hashtags like #school, #community, or #family!</p>
-                </div>
-                
-                <div class="info-card">
-                    <h2>Kindness Challenge</h2>
-                    <p>This week's challenge:</p>
-                    <p><strong>"Write an encouraging note to someone who might be having a difficult time."</strong></p>
-                    <p>Complete the challenge and share it on our feed with the tag #KindnessChallenge</p>
-                </div>
-                
+        </div>
 
-                <div class="info-card categories">
-                    <h2>How to Share Your Act of Kindness</h2>
-                    <p>
-                        Click the <strong>+</strong> button under the category that best fits your act of kindness (School, Community, Family, etc.).<br>
-                        Add your story, photo, or artwork to inspire others!
-                    </p>
-                </div>
+        <div class="share-section">
+            <h2>Share Your Acts of Kindness</h2>
+            <p>Have you performed an act of kindness? Share your experience and inspire others to spread kindness too!</p>
+            <div class="share-options">
+                <a href="contribute.html" class="share-button">
+                    <div class="share-icon">📝</div>
+                    <span>Share Your Story</span>
+                </a>
+                <a href="contribute.html" class="share-button">
+                    <div class="share-icon">📸</div>
+                    <span>Share Photos</span>
+                </a>
             </div>
         </div>
     </div>
-    <script>
-    // Dark mode toggle functionality
-    const darkModeToggle = document.getElementById('darkModeToggle');
-    // Check for saved preference
-    const savedDarkMode = localStorage.getItem('darkMode') === 'true';
-    darkModeToggle.checked = savedDarkMode;
-    document.body.classList.toggle('dark-mode', savedDarkMode);
-    darkModeToggle.addEventListener('change', function() {
-        document.body.classList.toggle('dark-mode', this.checked);
-        localStorage.setItem('darkMode', this.checked);
-    });
-    </script>
-    <!-- Bootstrap JS Bundle (with Popper) -->
+
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js" defer></script>
 </body>
 </html>
