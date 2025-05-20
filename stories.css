@@ -98,23 +98,6 @@
     color: #333333;
 }
 
-.read-more-button {
-    display: inline-block;
-    background-color: var(--primary-color);
-    color: white;
-    text-decoration: none;
-    padding: 10px 24px;
-    border-radius: 25px;
-    font-weight: bold;
-    transition: all 0.3s ease;
-}
-
-.read-more-button:hover {
-    background-color: var(--primary-dark);
-    color: white;
-    transform: translateY(-2px);
-}
-
 /* Share Story Section */
 .share-story-section {
     background-color: var(--card-bg);
@@ -253,4 +236,29 @@
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+a.read-more-button,
+.read-more-button {
+    background-color: var(--primary-color) !important;
+    color: white !important;
+    border: none !important;
+    display: inline-block;
+    padding: 10px 24px;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: bold;
+    transition: opacity 0.3s ease;
+}
+
+a.read-more-button:hover,
+.read-more-button:hover,
+a.read-more-button:focus,
+.read-more-button:focus {
+    background-color: var(--primary-color) !important;
+    color: white !important;
+    opacity: 0.9 !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
 } 
